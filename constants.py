@@ -20,3 +20,7 @@ defaultBGColor = (colorWhite)
 #Sprites
 
 playerSprite1 = pygame.image.load("Sprites/playerSprite1.png")
+
+#Coordinates
+xPlayer = 250
+yPlayer = 250

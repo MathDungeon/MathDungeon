@@ -3,6 +3,7 @@ Code by Rémi
 """
 
 import pygame
+from pygame.locals import *
 import constants as const
 
 def gameInit():
@@ -19,7 +20,7 @@ def draw():
 	#Clear BG
 	window.fill(const.defaultBGColor)
 
-	playerDraw(250,250)
+	playerDraw(const.xPlayer, const.yPlayer)
 
 	#Update window
 	pygame.display.flip()
@@ -34,6 +35,8 @@ def gameLoop():
 		for event in events:
 			if event.type == pygame.QUIT:
 				gameQuit = True
+			if event.type == pygame.KEYDOWN and event.key == pygame.K_z:
+				yPlayer -= 1
 
 		draw()
 	pygame.quit()
