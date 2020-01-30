@@ -1,12 +1,10 @@
 from character import *
 from ennemy import *
+from room import *
 
 michel = character()
-gobelin = ennemy(damage = 30)
+gobelin = ennemy(2)
+gobelin2 = ennemy(1)
 
-michel.presentation()
+michel.dealDamage()
 
-while gobelin.life and michel.life:
-    gobelin.dealDamage(michel)
-    michel.dealDamage(gobelin)
-  

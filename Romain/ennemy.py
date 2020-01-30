@@ -9,12 +9,19 @@ class ennemy :
     Ses méthodes sont :
         -dealDamage, qui inflige des dégats
         -takeDamage, qui permet de se prendre des dégats"""
+        
+    listEnnemy = [0,0,0,0,0] 
     
-    def __init__(self,name = "Gobelin",damage = 20,hp = 30,life = True):
+    def __init__(self,position,name = "Gobelin",damage = 20,hp = 30,life = True):
+        self.position = position
         self.name = name
         self.damage = damage
         self.hp = hp
         self.life = life
+        ennemy.listEnnemy[self.position] = self
+        
+    def presentation(self) :
+        print("Il y a un {0} qui fait {1} dégats, avec {2} pts de vie à l'emplacement {3}".format(self.name,self.damage,self.hp,self.position))
         
     def takeDamage(self,damage):
         self.hp -= damage
@@ -23,9 +30,15 @@ class ennemy :
             print("{0} est mort !".format(self.name))
             self.hp = 0
             self.life = False
+            ennemy.listEnnemy[self.position] = 0
         else :
             print("{0} a perdu {1} pts de vie ! Il lui en reste {2}.".format(self.name,damage,self.hp))
             
     def dealDamage(self,character):
         character.takeDamage(self.damage)
-    
+       
+    def presentationEnnemy(cls) :
+        for i in ennemy.listEnnemy :
+            if i != 0 :
+                i.presentation()
+    presentationEnnemy = classmethod(presentationEnnemy)
