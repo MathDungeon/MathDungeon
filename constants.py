@@ -1,5 +1,5 @@
 """
-Code by Rémi
+Code by Remi
 """
 
 """
@@ -25,3 +25,8 @@ defaultBGColor = (colorWhite)
 #Sprites
 
 playerSprite1 = pygame.image.load("Sprites/playerSprite1.png")
+tileSprite = pygame.image.load("Sprites/tileSprite.png")
+
+#Coordinates
+xPlayer = 1
+yPlayer = 1
