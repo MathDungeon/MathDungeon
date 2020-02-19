@@ -27,6 +27,11 @@ defaultBGColor = (colorWhite)
 playerSprite1 = pygame.image.load("Sprites/playerSprite1.png")
 tileSprite = pygame.image.load("Sprites/tileSprite.png")
 
-#Coordinates
-xPlayer = 1
-yPlayer = 1
+        
+#Map
+        
+mape = [
+       [0,0,0],
+       [0,0,0],
+       [0,0,0],
+       ]
