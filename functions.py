@@ -29,11 +29,11 @@ class tile:
     What does the tile contains
     """
     
-    def __init__(self,x,y,content=None):
+    def __init__(self,x,y,isVisible=False,content=None):
         
         self.x = x
         self.y = y
-        self.isVisible = False
+        self.isVisible = isVisible
         self.content = content
         self.tileDraw()
         const.mape[self.y][self.x] = self
@@ -41,10 +41,13 @@ class tile:
     
     def tileDraw(self):
         global window
-        window.blit(const.tileSprite,((self.x*32),(self.y*32)))
+        if self.isVisible:
+            window.blit(const.visibleTileSprite,((self.x*32),(self.y*32)))
+        else:
+            window.blit(const.notVisibleTileSprite,((self.x*32),(self.y*32)))
 
     def discover(self):
-    	self.isVisible = True
+        self.isVisible = True
 
 """
 Functions
@@ -95,30 +98,39 @@ def gameLoop():
     #Initialize gameQuit boolean that breaks the loop
     gameQuit = False
     while not gameQuit:
-
+        movement = False
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.QUIT:
                 gameQuit = True
             if platform == 'linux':
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_z:
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_z and const.mape[yPlayer-1][xPlayer]:
                     yPlayer -= 1
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_s:
+                    movement = True
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_s and const.mape[yPlayer+1][xPlayer]:
                     yPlayer += 1
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_q:
+                    movement = True
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_q and const.mape[yPlayer][xPlayer-1]:
                     xPlayer -= 1
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_d:
+                    movement = True
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_d and const.mape[yPlayer][xPlayer+1]:
                     xPlayer += 1
+                    movement = True
             if platform == 'win32':
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_w:
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_w and const.mape[yPlayer-1][xPlayer]:
                     yPlayer -= 1
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_s:
+                    movement = True
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_s and const.mape[yPlayer+1][xPlayer]:
                     yPlayer += 1
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_a:
+                    movement = True
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_a and const.mape[yPlayer][xPlayer-1]:
                     xPlayer -= 1
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_d:
+                    movement = True
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_d and const.mape[yPlayer][xPlayer+1]:
                     xPlayer += 1
-
+                    movement = True
+        if movement == True and const.mape[yPlayer][xPlayer]:
+        	const.mape[yPlayer][xPlayer].discover()
         draw()
     pygame.quit()
     exit()
@@ -128,6 +140,7 @@ def playerDraw(x,y):
     window.blit(const.playerSprite1, (32*x, 32*y))
 
 def generateMap():
-    tile1=tile(0,0)
+    tile1=tile(0,0,True)
     tile2=tile(1,1)
     tile3=tile(2,2)
+    tile4=tile(0,1)

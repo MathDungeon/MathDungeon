@@ -27,7 +27,8 @@ defaultBGColor = (colorWhite)
 #Sprites
 
 playerSprite1 = pygame.image.load("Sprites/playerSprite1.png")
-tileSprite = pygame.image.load("Sprites/tileSprite.png")
+visibleTileSprite = pygame.image.load("Sprites/visibleTileSprite.png")
+notVisibleTileSprite = pygame.image.load("Sprites/notVisibleTileSprite.png")
 
         
 #Map
@@ -35,5 +36,5 @@ tileSprite = pygame.image.load("Sprites/tileSprite.png")
 mape = [
        [None,None,None],
        [None,None,None],
-       [None,None,None],
+       [None,None,None]
        ]
