@@ -21,8 +21,8 @@ class ennemy :
         ennemy.listEnnemy[self.position] = self
         
     def presentation(self) :
-        print("Il y a un {0} qui fait {1} dégats, avec {2} pts de vie à l'emplacement {3}".format(self.name,self.damage,self.hp,self.position))
-        
+        print("{0} fait {1} dégats, a {2} pts de vie à l'emplacement {3}".format(self.name,self.damage,self.hp,self.position))
+    
     def takeDamage(self,damage):
         self.hp -= damage
         if self.hp <= 0 :

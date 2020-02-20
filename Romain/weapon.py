@@ -8,7 +8,7 @@ class weapon : #Définition de notre classe Arme
         - presentation, qui affiche les atributs de l'arme (nom et dégats)
         - change, qui change l'arme en remplaçant ses attributs"""
     
-    def __init__(self,name="Epée rouilée",damage=10,skill = 'None'): #La métohde constructeur
+    def __init__(self,name="Epée rouilée",damage=10,skill = 'Thunderstruck'): #La métohde constructeur
         self.damage = damage
         self.name = name
         self.skill = skill

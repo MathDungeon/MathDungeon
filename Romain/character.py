@@ -1,6 +1,7 @@
 from weapon import weapon
 from backpack import backpack
 from ennemy import *
+from functions import *
 
 class character :
     """Classe définissant un personnage caractérisé par :
@@ -29,7 +30,7 @@ class character :
     def takeDamage(self,damage):
         self.hp -= damage
         if self.hp <= 0 :
-            print("{0} est mort !".format(self.name))
+            print("{0} a perdu {1} pts de vie ! {0} est mort !".format(self.name,damage))
             self.hp = 0
             self.life = False
         else :
@@ -38,14 +39,16 @@ class character :
     def dealDamage(self):
         ennemy.listEnnemy[self.target].takeDamage(self.weapon.damage)
         
-    def dealSkillDamage(self,ennemy,damage = 5):
-        ennemy.takeDamage(damage)
+    def dealSkillDamage(self,damage = 5):
+        ennemy.listEnnemy[self.target].takeDamage(damage)
         
     def useSkill(self):
         if self.weapon.skill == 'None' :
             print("Rien ne se passe !")
         if self.weapon.skill == 'Thunderstruck' :
-            dealSkillDamage(gobelin,10)
+            askTarget(self)
+            self.dealSkillDamage(20)
+            
             
     def changeTarget(self,target):
         self.target = target
