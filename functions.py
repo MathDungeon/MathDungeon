@@ -4,6 +4,7 @@ Code by Remi
 
 import pygame
 import constants as const
+import classes as clas
 from sys import exit,platform
 
 #Functions
@@ -36,10 +37,11 @@ class tile:
         self.content = content
         self.tileDraw()
         const.mape[self.y][self.x] = self
+        print(const.mape)
     
     def tileDraw(self):
         global window
-        window.blit(const.tileSprite,(self.x,self.y))
+        window.blit(const.tileSprite,((self.x*32),(self.y*32)))
 
     def discover(self):
     	self.isVisible = True
@@ -48,13 +50,13 @@ class tile:
 Functions
 """
 
-def varFraming(var ,min, max):
-    if var < min:
-        return min
-
-    if var > max:
-        return max
-
+def varFraming(var,vmin,vmax):
+    if var < vmin:
+        return vmin
+    elif var > vmax:
+        return vmax
+    else:
+        return var
 def gameInit():
 
     #Declare window object
@@ -73,10 +75,13 @@ def draw():
     #Clear BG
     window.fill(const.defaultBGColor)
 
-    #tiles = tile(0,0)
+    for line in const.mape:
+        for tile in line:
+            if tile:
+                tile.tileDraw()
 
-    xPlayer = varFraming(xPlayer, 0, const.weight-33)
-    yPlayer = varFraming(yPlayer, 0, const.height-33)
+    xPlayer = varFraming(xPlayer, 0, const.cWeight)
+    yPlayer = varFraming(yPlayer, 0, const.cHeight)
 
     playerDraw(xPlayer, yPlayer)
 
@@ -120,6 +125,9 @@ def gameLoop():
 
 def playerDraw(x,y):
     #TODO convert into coordinates with pixels
-    print(x,y)
-    #window.blit(const.playerSprite1, (32*x, 32*y))
-    #print(x,",",y)
+    window.blit(const.playerSprite1, (32*x, 32*y))
+
+def generateMap():
+    tile1=tile(0,0)
+    tile2=tile(1,1)
+    tile3=tile(2,2)

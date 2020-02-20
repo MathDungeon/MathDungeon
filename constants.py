@@ -12,8 +12,10 @@ pygame.init()
 
 #Window
 
-height = 540
-weight = 960
+height = 512
+weight = 928
+cHeight = 15
+cWeight = 28
 
 #Colors
 
@@ -31,7 +33,7 @@ tileSprite = pygame.image.load("Sprites/tileSprite.png")
 #Map
         
 mape = [
-       [0,0,0],
-       [0,0,0],
-       [0,0,0],
+       [None,None,None],
+       [None,None,None],
+       [None,None,None],
        ]
