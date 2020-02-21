@@ -14,8 +14,10 @@ Vars
 """
 
 #Coordinates
-xPlayer = 0
-yPlayer = 0
+xPlayer = 14
+yPlayer = 7
+
+level = 1
 
 """
 Classes
@@ -37,7 +39,6 @@ class tile:
         self.content = content
         self.tileDraw()
         const.mape[self.y][self.x] = self
-        print(const.mape)
     
     def tileDraw(self):
         global window
@@ -83,9 +84,6 @@ def draw():
             if tile:
                 tile.tileDraw()
 
-    xPlayer = varFraming(xPlayer, 0, const.cWeight)
-    yPlayer = varFraming(yPlayer, 0, const.cHeight)
-
     playerDraw(xPlayer, yPlayer)
 
     #Update window
@@ -129,8 +127,10 @@ def gameLoop():
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_d and const.mape[yPlayer][xPlayer+1]:
                     xPlayer += 1
                     movement = True
+        xPlayer = varFraming(xPlayer, 0, const.cWeight)
+        yPlayer = varFraming(yPlayer, 0, const.cHeight)
         if movement == True and const.mape[yPlayer][xPlayer]:
-        	const.mape[yPlayer][xPlayer].discover()
+            const.mape[yPlayer][xPlayer].discover()
         draw()
     pygame.quit()
     exit()
@@ -140,7 +140,22 @@ def playerDraw(x,y):
     window.blit(const.playerSprite1, (32*x, 32*y))
 
 def generateMap():
-    tile1=tile(0,0,True)
-    tile2=tile(1,1)
-    tile3=tile(2,2)
-    tile4=tile(0,1)
+    tile(9,9)
+    tile(10,9)
+    tile(11,9)
+    tile(12,7)
+    tile(12,8)
+    tile(12,9)
+    tile(13,6)
+    tile(13,7)
+    tile(14,5)
+    tile(14,6)
+    tile(14,7,True)
+    tile(14,8)
+    tile(15,5)
+    tile(15,7)
+    tile(15,8)
+    tile(15,9)
+    tile(16,6)
+    tile(16,7)
+    tile(17,6)

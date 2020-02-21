@@ -33,8 +33,8 @@ notVisibleTileSprite = pygame.image.load("Sprites/notVisibleTileSprite.png")
         
 #Map
         
-mape = [
-       [None,None,None],
-       [None,None,None],
-       [None,None,None]
-       ]
+mape = []
+for i in range(0,16):
+    mape.append([])
+    for j in range(0,29):
+        mape[i].append(None)
