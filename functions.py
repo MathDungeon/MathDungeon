@@ -31,8 +31,9 @@ class tile:
     What does the tile contains
     """
     
-    def __init__(self,x,y,isVisible=False,content=None):
+    def __init__(self,coordinates,isVisible=False,content=None):
         
+        (x,y) = coordinates
         self.x = x
         self.y = y
         self.isVisible = isVisible
@@ -139,23 +140,8 @@ def playerDraw(x,y):
     #TODO convert into coordinates with pixels
     window.blit(const.playerSprite1, (32*x, 32*y))
 
-def generateMap():
-    tile(9,9)
-    tile(10,9)
-    tile(11,9)
-    tile(12,7)
-    tile(12,8)
-    tile(12,9)
-    tile(13,6)
-    tile(13,7)
-    tile(14,5)
-    tile(14,6)
-    tile(14,7,True)
-    tile(14,8)
-    tile(15,5)
-    tile(15,7)
-    tile(15,8)
-    tile(15,9)
-    tile(16,6)
-    tile(16,7)
-    tile(17,6)
+def generateMap(level):
+    global xPlayer
+    global yPlayer
+    for i in const.levels[level-1]:
+        tile(i,(i==(xPlayer,yPlayer)))
