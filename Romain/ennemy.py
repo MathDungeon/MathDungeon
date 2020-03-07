@@ -51,10 +51,10 @@ class ennemy :
     def dealDamage(self,character):
         character.takeDamage(self.damage)
     
-    def summonEnnemy(self,ennemy,position) :
+    def summonEnnemy(self,position) :
         if self.summon == 'Bat' :
             print("Le comte Vladimir a invoqué une chauve-souris à l'emplacement {0} !".format(position))
-            ennemy = ennemy(position,"Chauve-souris",5,10)
+            ennemy.listEnnemy[position] = ennemy(position,"Chauve-souris",5,10)
             
 
                 
@@ -73,11 +73,14 @@ class ennemy :
             else : 
                 self.count -= 1
         if self.name == "Comte Vladimir" :
-            if len([i for i in ennemy.listEnnemy if i != 0]) < 3 and randint(1,10) < 4 :
-                for essais in range(1,3):
-                    for pos,i in enumerate(ennemy.listEnnemy):
-                        if i == 0 :
-                            self.summonEnnemy(essais,pos)
+            if len([i for i in ennemy.listEnnemy if i != 0]) < 3 and randint(1,10) < 10 :
+                count = 0
+                for pos,i in enumerate(ennemy.listEnnemy):
+                    if i == 0 :
+                        self.summonEnnemy(pos)
+                        count += 1
+                    if count == 2:
+                        break
                         
                     
             else :

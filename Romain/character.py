@@ -46,7 +46,7 @@ class character :
         if self.weapon.skill == 'None' :
             print("Rien ne se passe !")
         if self.weapon.skill == 'Thunderstruck' :
-            askTarget(self)
+            self.changeTarget(askTarget(self))
             self.dealSkillDamage(20)
             
             
