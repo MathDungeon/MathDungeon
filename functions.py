@@ -6,6 +6,7 @@ import pygame
 import constants as const
 import classes as clas
 from sys import exit,platform
+from tile import tile
 
 #Functions
 
@@ -18,42 +19,6 @@ xPlayer = 14
 yPlayer = 7
 
 level = 1
-
-"""
-Classes
-"""
-
-class tile:
-    """
-    Define:
-    Coordinates
-    If tile has been visited yet
-    What does the tile contains
-    """
-    
-    def __init__(self,coordinates,isVisible=False,content=None):
-        
-        (x,y) = coordinates
-        self.x = x
-        self.y = y
-        self.isVisible = isVisible
-        self.content = content
-        self.tileDraw()
-        const.mape[self.y][self.x] = self
-    
-    def tileDraw(self):
-        global window
-        if self.isVisible:
-            window.blit(const.visibleTileSprite,((self.x*32),(self.y*32)))
-        else:
-            window.blit(const.notVisibleTileSprite,((self.x*32),(self.y*32)))
-
-    def discover(self):
-        self.isVisible = True
-
-"""
-Functions
-"""
 
 def varFraming(var,vmin,vmax):
     if var < vmin:
@@ -144,4 +109,13 @@ def generateMap(level):
     global xPlayer
     global yPlayer
     for i in const.levels[level-1]:
-        tile(i,(i==(xPlayer,yPlayer)))
+        if type(i) == tuple:
+            tile(i,(i==(xPlayer,yPlayer)))
+        elif type(i) == dict:
+            for coord, cont in i.items():
+                tile(coord, (coord==(xPlayer,yPlayer)), cont)
+    for i in const.mape:
+        for j in i:
+            if j:
+                print(j.x,",",j.y,":",j.content)
+    print(const.mape[7][14].up, const.mape[7][14].down, const.mape[7][14].left, const.mape[7][14].right)
