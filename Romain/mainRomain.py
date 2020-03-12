@@ -4,9 +4,10 @@ from functions import *
 
 personnage = character()
 
-ennemy.listEnnemy[2] = gobelin(2)
+for x in range (0,5) :
+    ennemy.listEnnemy[x] = bat(x)
 
-windowInitialisation()
+windowInitialisation(personnage)
 
 
 while personnage.life:
@@ -16,7 +17,7 @@ while personnage.life:
             break
     
     ennemy.presentationEnnemy()
-    redrawBoard()
+    redrawBoard(personnage)
     choice = askAction()
     
     if choice == 1 :

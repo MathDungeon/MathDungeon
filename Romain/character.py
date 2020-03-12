@@ -15,7 +15,7 @@ class character :
         -takeDamage, qui permet au personnage de perdre de la vie
         -dealDamage, qui permet d'attaquer un ennemi et de lui faire perdre de la vie"""
     
-    def __init__(self,name="Michel",hp = 100,weapon = weapon(),backpack = backpack(),life = True,target = 2):
+    def __init__(self,name="Jean",hp = 100,weapon = weapon(),backpack = backpack(),life = True,target = 2):
         self.name = name
         self.hp = hp
         self.weapon = weapon

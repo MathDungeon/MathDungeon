@@ -73,7 +73,7 @@ class ennemy :
             else : 
                 self.count -= 1
         if self.name == "Comte Vladimir" :
-            if len([i for i in ennemy.listEnnemy if i != 0]) < 3 and randint(1,10) < 10 :
+            if len([i for i in ennemy.listEnnemy if i != 0]) < 3 and randint(1,10) < 5 :
                 count = 0
                 for pos,i in enumerate(ennemy.listEnnemy):
                     if i == 0 :
