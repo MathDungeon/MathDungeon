@@ -22,7 +22,7 @@ class tile:
         self.up = const.mape[self.y - 1][self.x]
         self.down = const.mape[self.y + 1][self.x]
         self.left = const.mape[self.y][self.x - 1]
-        self.right = const.mape[self.y][self.x -1]
+        self.right = const.mape[self.y][self.x + 1]
         if self.up:
             self.up.down = self
         if self.down:
@@ -36,8 +36,17 @@ class tile:
         global window
         if self.isVisible:
             f.window.blit(const.visibleTileSprite,((self.x*32),(self.y*32)))
+            if self.content == "Boss" and not(self.x == f.xPlayer and self.y == f.yPlayer):
+                f.window.blit(const.bossSprite,((self.x*32),(self.y*32)))
+            if self.content == "Marchand" and not(self.x == f.xPlayer and self.y == f.yPlayer):
+                f.window.blit(const.shop,((self.x*32),(self.y*32)))
         else:
             f.window.blit(const.notVisibleTileSprite,((self.x*32),(self.y*32)))
 
-    def discover(self):
+    def reveal(self):
         self.isVisible = True
+    
+    def discover(self):
+        for i in (self.up,self.down,self.left,self.right):
+            if i:
+                i.reveal()

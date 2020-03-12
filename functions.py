@@ -4,7 +4,6 @@ Code by Remi
 
 import pygame
 import constants as const
-import classes as clas
 from sys import exit,platform
 from tile import tile
 
@@ -46,9 +45,9 @@ def draw():
     window.fill(const.defaultBGColor)
 
     for line in const.mape:
-        for tile in line:
-            if tile:
-                tile.tileDraw()
+        for t in line:
+            if t:
+                t.tileDraw()
 
     playerDraw(xPlayer, yPlayer)
 
@@ -62,41 +61,22 @@ def gameLoop():
     #Initialize gameQuit boolean that breaks the loop
     gameQuit = False
     while not gameQuit:
-        movement = False
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.QUIT:
                 gameQuit = True
             if platform == 'linux':
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_z and const.mape[yPlayer-1][xPlayer]:
-                    yPlayer -= 1
-                    movement = True
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_s and const.mape[yPlayer+1][xPlayer]:
-                    yPlayer += 1
-                    movement = True
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_q and const.mape[yPlayer][xPlayer-1]:
-                    xPlayer -= 1
-                    movement = True
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_d and const.mape[yPlayer][xPlayer+1]:
-                    xPlayer += 1
-                    movement = True
-            if platform == 'win32':
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_w and const.mape[yPlayer-1][xPlayer]:
-                    yPlayer -= 1
-                    movement = True
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_s and const.mape[yPlayer+1][xPlayer]:
-                    yPlayer += 1
-                    movement = True
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_a and const.mape[yPlayer][xPlayer-1]:
-                    xPlayer -= 1
-                    movement = True
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_d and const.mape[yPlayer][xPlayer+1]:
-                    xPlayer += 1
-                    movement = True
-        xPlayer = varFraming(xPlayer, 0, const.cWeight)
-        yPlayer = varFraming(yPlayer, 0, const.cHeight)
-        if movement == True and const.mape[yPlayer][xPlayer]:
-            const.mape[yPlayer][xPlayer].discover()
+                keys = {pygame.K_z:(yPlayer-1,xPlayer),pygame.K_s:(yPlayer+1,xPlayer),pygame.K_q:(yPlayer,xPlayer-1),pygame.K_d:(yPlayer,xPlayer+1)}
+            elif platform == 'win32':
+                keys = {pygame.K_w:(yPlayer-1,xPlayer),pygame.K_s:(yPlayer+1,xPlayer),pygame.K_a:(yPlayer,xPlayer-1),pygame.K_d:(yPlayer,xPlayer+1)}
+            for key,cont in keys.items():
+                y,x = cont
+                if event.type == pygame.KEYDOWN and event.key == key and const.mape[y][x]:
+                    yPlayer = y
+                    xPlayer = x
+                    xPlayer = varFraming(xPlayer, 0, const.cWeight)
+                    yPlayer = varFraming(yPlayer, 0, const.cHeight)
+                    const.mape[yPlayer][xPlayer].discover()
         draw()
     pygame.quit()
     exit()
@@ -104,7 +84,6 @@ def gameLoop():
 def playerDraw(x,y):
     #TODO convert into coordinates with pixels
     window.blit(const.playerSprite1, (32*x, 32*y))
-
 def generateMap(level):
     global xPlayer
     global yPlayer
@@ -118,4 +97,5 @@ def generateMap(level):
         for j in i:
             if j:
                 print(j.x,",",j.y,":",j.content)
+    const.mape[yPlayer][xPlayer].discover()
     print(const.mape[7][14].up, const.mape[7][14].down, const.mape[7][14].left, const.mape[7][14].right)

@@ -27,6 +27,8 @@ defaultBGColor = (colorWhite)
 #Sprites
 
 playerSprite1 = pygame.image.load("Sprites/playerSprite1.png")
+bossSprite = pygame.image.load("Sprites/bossSprite.png")
+shop = pygame.image.load("Sprites/coin.png")
 visibleTileSprite = pygame.image.load("Sprites/visibleTileSprite.png")
 notVisibleTileSprite = pygame.image.load("Sprites/notVisibleTileSprite.png")
 
