@@ -60,19 +60,20 @@ class ennemy :
                 
     
     def action(self,personnage) :
-        if self.name == "Gobelin" :
+        
+        if self.name == "Gobelin" or self.name == "Squelette" or self.name == "Chauve-souris" :
             self.dealDamage(personnage)
-        if self.name == "Squelette" :
-            self.dealDamage(personnage)
-        if self.name == "Chauve-souris" : 
-            self.dealDamage(personnage)
+        
         if self.name == "Troll" :
+            
             if self.count == 0 :
                 self.dealDamage(personnage)
                 self.count = 1
             else : 
                 self.count -= 1
+        
         if self.name == "Comte Vladimir" :
+            
             if len([i for i in ennemy.listEnnemy if i != 0]) < 3 and randint(1,10) < 5 :
                 count = 0
                 for pos,i in enumerate(ennemy.listEnnemy):
@@ -82,7 +83,6 @@ class ennemy :
                     if count == 2:
                         break
                         
-                    
             else :
                 self.dealDamage(personnage)
             

@@ -7,19 +7,11 @@ def drawEnnemyCursor(cursor) :
     window.blit(spr_dungeon,(0,0))
     window.blit(spr_selection,(0,384))
     window.blit(font.render("Hp : " + str(personnageFunctions.hp) + "/100",True,(255,255,255)),(30,30))
+    window.blit(spr_hpBar,(220,30))
+    pygame.draw.rect(window,(255,0,0),(243,33,int(personnageFunctions.hp*4.54),44))
     drawEnnemy()
     
-    if cursor == 0 :
-        window.blit(spr_pointeurPerso,(80,96))
-    if cursor == 1 :
-        window.blit(spr_pointeurPerso,(265,96))
-    if cursor == 2 :
-        window.blit(spr_pointeurPerso,(450,96))
-    if cursor == 3 :
-        window.blit(spr_pointeurPerso,(635,96))
-    if cursor == 4 :
-        window.blit(spr_pointeurPerso,(820,96))
-        
+    window.blit(spr_pointeurPerso,(80+cursor*186,96))        
         
 def drawCursor(cursor) :
     
@@ -39,63 +31,30 @@ def drawEnnemy() :
     
     for pos,mechant in enumerate(ennemy.listEnnemy) :
         if mechant != 0 :
+            
             if mechant.name == "Gobelin" :
+                
                 hpDisplay = "Hp : " + str(mechant.hp) + "/30"
                 hps = font.render(hpDisplay,True,(150,150,150))
-                if pos == 0 :
-                    window.blit(spr_gobelin,(0,128))
-                    window.blit(hps,(61,290))
-                if pos == 1 :
-                    window.blit(spr_gobelin,(186,128))
-                    window.blit(hps,(247,290))
-                if pos == 2 :
-                    window.blit(spr_gobelin,(372,128))
-                    window.blit(hps,(433,290))
-                if pos == 3 :
-                    window.blit(spr_gobelin,(558,128))
-                    window.blit(hps,(619,290))
-                if pos == 4 :
-                    window.blit(spr_gobelin,(744,128))
-                    window.blit(hps,(805,290))
+                
+                window.blit(spr_gobelin,(pos*186,128))
+                window.blit(hps,(61+pos*186,290))
                     
             if mechant.name == "Chauve-souris" :
+                
                 hpDisplay = "Hp : " + str(mechant.hp) + "/10"
                 hps = font.render(hpDisplay,True,(150,150,150))
-                if pos == 0 :
-                    window.blit(spr_bat,(13,118))
-                    window.blit(hps,(61,265))
-                if pos == 1 :
-                    window.blit(spr_bat,(199,118))
-                    window.blit(hps,(247,265))
-                if pos == 2 :
-                    window.blit(spr_bat,(385,118))
-                    window.blit(hps,(433,265))
-                if pos == 3 :
-                    window.blit(spr_bat,(571,118))
-                    window.blit(hps,(619,265))
-                if pos == 4 :
-                    window.blit(spr_bat,(757,118))
-                    window.blit(hps,(805,265))
+                
+                window.blit(spr_bat,(13+pos*186,118))
+                window.blit(hps,(61+pos*186,265))
                     
             if mechant.name == "Comte Vladimir" :
+                
                 hpDisplay = "Hp : " + str(mechant.hp) + "/100"
                 hps = font.render(hpDisplay,True,(150,150,150))
-                if pos == 0 :
-                    window.blit(spr_vampire,(30,135))
-                    window.blit(hps,(55,350))
-                if pos == 1 :
-                    window.blit(spr_vampire,(216,135))
-                    window.blit(hps,(241,350))
-                if pos == 2 :
-                    window.blit(spr_vampire,(402,135))
-                    window.blit(hps,(427,350))
-                if pos == 3 :
-                    window.blit(spr_vampire,(588,135))
-                    window.blit(hps,(613,350))
-                if pos == 4 :
-                    window.blit(spr_vampire,(774,135))
-                    window.blit(hps,(799,350))
                 
+                window.blit(spr_vampire,(30+pos*186,135))
+                window.blit(hps,(55+186*pos,350))                
 
 def windowInitialisation(personnage) :
     
@@ -107,6 +66,7 @@ def windowInitialisation(personnage) :
     global spr_bat
     global spr_vampire
     global spr_pointeurPerso
+    global spr_hpBar
     global font
     global personnageFuctions
     
@@ -120,13 +80,14 @@ def windowInitialisation(personnage) :
     #Création de la fenêtre
     window = pygame.display.set_mode((weight,height))
     
-    spr_dungeon = pygame.image.load("backgroundDungeon.jpg")
-    spr_selection = pygame.image.load("selectionScreen.png")
-    spr_pointeur = pygame.image.load("pointeur.png")
-    spr_gobelin = pygame.image.load("gobelin.png")
-    spr_bat = pygame.image.load("bat.png")
-    spr_vampire = pygame.image.load("vampire.png")
-    spr_pointeurPerso = pygame.image.load("pointeurPerso.png")
+    spr_dungeon = pygame.image.load("Sprites/backgroundDungeon.jpg")
+    spr_selection = pygame.image.load("Sprites/selectionScreen.png")
+    spr_pointeur = pygame.image.load("Sprites/pointeur.png")
+    spr_gobelin = pygame.image.load("Sprites/gobelin.png")
+    spr_bat = pygame.image.load("Sprites/bat.png")
+    spr_vampire = pygame.image.load("Sprites/vampire.png")
+    spr_pointeurPerso = pygame.image.load("Sprites/pointeurPerso.png")
+    spr_hpBar = pygame.image.load("Sprites/hpBar.png")
     font = pygame.font.SysFont('arial', 24)
     
     window.blit(spr_dungeon,(0,0))
@@ -188,6 +149,8 @@ def redrawBoard(personnage) :
     window.blit(spr_selection,(0,384))
     window.blit(spr_pointeur,(97,435))
     window.blit(font.render("Hp : " + str(personnageFunctions.hp) + "/100",True,(255,255,255)),(30,30))
+    window.blit(spr_hpBar,(220,30))
+    pygame.draw.rect(window,(255,0,0),(243,33,int(personnageFunctions.hp*4.54),44))
     drawEnnemy()
 
 def askTarget(personnage) :

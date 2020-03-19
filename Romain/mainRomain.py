@@ -5,10 +5,9 @@ from functions import *
 personnage = character()
 
 for x in range (0,5) :
-    ennemy.listEnnemy[x] = bat(x)
+    ennemy.listEnnemy[x] = vladimir(x)
 
 windowInitialisation(personnage)
-
 
 while personnage.life:
     
@@ -36,11 +35,6 @@ while personnage.life:
 
         personnage.backpack.usePotion(personnage)  
         mobAction(personnage)
-    
-    
-    
-    
-
         
 if not personnage.life :
     print("ET C'EST PERDU")
