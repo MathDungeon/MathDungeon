@@ -14,7 +14,7 @@ class ennemy :
         
     listEnnemy = [0,0,0,0,0] 
     
-    def __init__(self,position,name = "Gobelin",damage = 10,hp = 30,summon = 0,count = 0,life = True):
+    def __init__(self,position,name = "Gobelin",damage = 10,hp = 30,summon = 0,count = 0,life = True,apparition = False):
         self.position = position
         self.name = name
         self.damage = damage
@@ -22,6 +22,7 @@ class ennemy :
         self.life = life
         self.summon = summon
         self.count = count
+        self.apparition = apparition
         ennemy.listEnnemy[self.position] = self
      
         

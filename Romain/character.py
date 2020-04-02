@@ -1,5 +1,5 @@
 from ennemy import *
-from functions import *
+from functions import * 
 
 
 class weapon : #Définition de notre classe Weapon
@@ -13,18 +13,20 @@ class weapon : #Définition de notre classe Weapon
         - presentation, qui affiche dans la console les atributs de l'arme (nom et dégats)
         - change, qui change l'arme en remplaçant ses attributs """
     
-    def __init__(self,name="Epée rouilée",damage=10,skill = 'Thunderstruck'): #La métohde constructeur
+    def __init__(self,name="Epée rouilée",damage=10,skill = 'Thunderstruck',cooldown = 5): #La métohde constructeur
         self.damage = damage
         self.name = name
         self.skill = skill
+        self.cooldown = cooldown
     
     def presentation(self):
         print("Cette arme est" , self.name , ", une arme qui possède" , self.damage , "points de dégats et avec comme compétence :" ,self.skill)
     
-    def change(self,name = "Epee rouillé",damage = 10,skill = 'Thunderstruck'):
+    def change(self,name = "Epee rouillé",damage = 10,skill = 'Thunderstruck',cooldown = 5):
         self.damage = damage
         self.name = name
         self.skill = skill
+        self.cooldown = cooldown
         
         
         
