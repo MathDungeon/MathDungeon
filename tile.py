@@ -31,15 +31,29 @@ class tile:
             self.left.right = self
         if self.right:
             self.right.left = self
+        if (self.x,self.y)==(f.player.x,f.player.y):
+            f.player.tile = self
+
+    def clear(self):
+        const.mape[self.y][self.x] = None
+        del self
+
+    def __repr__(self):
+        if self.content:
+            return "{0} at {1},{2}".format(self.content,self.x,self.y)
+        else:
+            return "Case vide at {0},{1}".format(self.x,self.y)
     
     def tileDraw(self):
         global window
         if self.isVisible:
             f.window.blit(const.visibleTileSprite,((self.x*32),(self.y*32)))
-            if self.content == "Boss" and not(self.x == f.xPlayer and self.y == f.yPlayer):
+            if self.content == "Boss" and not(self.x == f.player.x and self.y == f.player.y):
                 f.window.blit(const.bossSprite,((self.x*32),(self.y*32)))
-            if self.content == "Marchand" and not(self.x == f.xPlayer and self.y == f.yPlayer):
-                f.window.blit(const.shop,((self.x*32),(self.y*32)))
+            if self.content == "Shop" and not(self.x == f.player.x and self.y == f.player.y):
+                f.window.blit(const.shopSprite,((self.x*32),(self.y*32)))
+            if self.content == "Defeated_Boss" and not(self.x == f.player.x and self.y == f.player.y):
+                f.window.blit(const.trapdoorSprite,((self.x*32),(self.y*32)))
         else:
             f.window.blit(const.notVisibleTileSprite,((self.x*32),(self.y*32)))
 
@@ -50,3 +64,11 @@ class tile:
         for i in (self.up,self.down,self.left,self.right):
             if i:
                 i.reveal()
+
+    def interact(self):
+        if self.content:
+            global window
+            temp = {"Boss":"Oulala", "Shop":"Marchander","Defeated_Boss":"Etage suivant"}
+            text = const.font.render(temp[self.content],True,const.colorBlack)
+            f.window.blit(const.keyESprite,(416,370))
+            f.window.blit(text,(448,371))
