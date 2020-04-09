@@ -1,5 +1,6 @@
 from character import *
 from random import randint
+import time
 import pygame
 
 def drawEnnemyCursor(cursor) :
@@ -11,13 +12,22 @@ def drawEnnemyCursor(cursor) :
     pygame.draw.rect(window,(255,0,0),(243,33,int(personnageFunctions.hp*4.54),44))
     window.blit(font.render("Hp : " + str(personnageFunctions.hp) + "/100",True,(255,255,255)),(420,40))
     drawEnnemy()
-    
+    if personnageFunctions.weapon.cooldown == 0 :
+        window.blit(font.render("Compétence prête !",True,(150,150,150)),(382,460))
+    else : 
+        window.blit(font.render("Recharge :" + str(personnageFunctions.weapon.cooldown) + "/" + str(personnageFunctions.weapon.tempsCd),True,(150,150,150)),(382,460))
+    window.blit(font.render("Potions :" + str(personnageFunctions.backpack.potion) + "/5",True,(150,150,150)),(750,460))
     window.blit(spr_pointeurPerso,(80+cursor*186,96))        
         
 def drawCursor(cursor) :
     
     global window
     window.blit(spr_selection,(0,384))
+    if personnageFunctions.weapon.cooldown == 0 :
+        window.blit(font.render("Compétence prête !",True,(150,150,150)),(382,460))
+    else : 
+        window.blit(font.render("Recharge :" + str(personnageFunctions.weapon.cooldown) + "/" + str(personnageFunctions.weapon.tempsCd),True,(150,150,150)),(382,460))
+    window.blit(font.render("Potions :" + str(personnageFunctions.backpack.potion) + "/5",True,(150,150,150)),(750,460))
     
     if cursor == 1 :
         window.blit(spr_pointeur,(97,435))
@@ -56,7 +66,15 @@ def drawEnnemy() :
                 
                 window.blit(spr_vampire,(30+pos*186,135))
                 window.blit(hps,(55+186*pos,350))                
-
+            
+            if mechant.name == "Araignee" : 
+                
+                hpDisplay = "Hp : " + str(mechant.hp) + "/15"
+                hps = font.render(hpDisplay,True,(150,150,150))
+                
+                window.blit(spr_spider,(18+pos*186,100))
+                window.blit(hps,(50+pos*186,270))
+            
 def windowInitialisation(personnage) :
     
     global window
@@ -66,6 +84,7 @@ def windowInitialisation(personnage) :
     global spr_gobelin
     global spr_bat
     global spr_vampire
+    global spr_spider
     global spr_pointeurPerso
     global spr_hpBar
     global spr_fleche
@@ -116,6 +135,7 @@ def windowInitialisation(personnage) :
     spr_gobelin = pygame.image.load("Sprites/gobelin.png")
     spr_bat = pygame.image.load("Sprites/bat.png")
     spr_vampire = pygame.image.load("Sprites/vampire.png")
+    spr_spider = pygame.image.load("Sprites/araignee.png")
     spr_pointeurPerso = pygame.image.load("Sprites/pointeurPerso.png")
     spr_hpBar = pygame.image.load("Sprites/hpBar.png")
     spr_fleche = pygame.image.load("Sprites/fleche.png")
@@ -168,6 +188,11 @@ def askAction() :
     
     window.blit(spr_selection,(0,384))
     window.blit(spr_pointeur,(97,435))
+    if personnageFunctions.weapon.cooldown == 0 :
+        window.blit(font.render("Compétence prête !",True,(150,150,150)),(382,460))
+    else : 
+        window.blit(font.render("Recharge :" + str(personnageFunctions.weapon.cooldown) + "/" + str(personnageFunctions.weapon.tempsCd),True,(150,150,150)),(382,460))
+    window.blit(font.render("Potions :" + str(personnageFunctions.backpack.potion) + "/5",True,(150,150,150)),(750,460))
     
     while loop :
         
@@ -192,7 +217,7 @@ def askAction() :
                         drawCursor(cursor)
                         pygame.display.flip()
                 
-                if event.key == pygame.K_KP_ENTER or event.key == pygame.K_RETURN :
+                if event.key == pygame.K_KP_ENTER or event.key == pygame.K_RETURN or event.key == pygame.K_SPACE :
                     loop = False
                     return cursor 
 
@@ -206,7 +231,15 @@ def redrawBoardNoHP() :
     window.blit(spr_hpBar,(220,30))
     pygame.draw.rect(window,(255,0,0),(243,33,int(personnageFunctions.hp*4.54),44))
     window.blit(font.render("Hp : " + str(personnageFunctions.hp) + "/100",True,(255,255,255)),(420,40))
+    if personnageFunctions.weapon.cooldown == 0 :
+        window.blit(font.render("Compétence prête !",True,(150,150,150)),(382,460))
+    else : 
+        window.blit(font.render("Recharge :" + str(personnageFunctions.weapon.cooldown) + "/" + str(personnageFunctions.weapon.tempsCd),True,(150,150,150)),(382,460))
+    window.blit(font.render("Potions :" + str(personnageFunctions.backpack.potion) + "/5",True,(150,150,150)),(750,460))
+    
     drawEnnemy()
+    
+    pygame.display.flip()
      
 def redrawBoard(personnage) :
     
@@ -221,8 +254,16 @@ def redrawBoard(personnage) :
     window.blit(spr_hpBar,(220,30))
     pygame.draw.rect(window,(255,0,0),(243,33,int(personnageFunctions.hp*4.54),44))
     window.blit(font.render("Hp : " + str(personnageFunctions.hp) + "/100",True,(255,255,255)),(420,40))
+    if personnage.weapon.cooldown == 0 :
+        window.blit(font.render("Compétence prête !",True,(150,150,150)),(382,460))
+    else : 
+        window.blit(font.render("Recharge :" + str(personnageFunctions.weapon.cooldown) + "/" + str(personnageFunctions.weapon.tempsCd),True,(150,150,150)),(382,460))
+    window.blit(font.render("Potions :" + str(personnageFunctions.backpack.potion) + "/5",True,(150,150,150)),(750,460))
+    
     drawEnnemy()
-
+    
+    pygame.display.flip()
+    
 def askTarget(personnage) :
     
     loop = True
@@ -260,7 +301,7 @@ def askTarget(personnage) :
                             drawEnnemyCursor(cursor)
                             pygame.display.flip()
                     
-                if event.key == pygame.K_KP_ENTER or event.key == pygame.K_RETURN :
+                if event.key == pygame.K_KP_ENTER or event.key == pygame.K_RETURN or event.key == pygame.K_SPACE :
                     loop = False
                     return cursor
         
@@ -389,8 +430,11 @@ def attack(personnage,ennemy):
 def action(personnage,ennemy) :
     
     if ennemy.apparition:
-    
-        if ennemy.name == "Gobelin" or ennemy.name == "Squelette" or ennemy.name == "Chauve-souris" :
+        
+        redrawBoard(personnage)
+        pygame.display.flip()
+        
+        if ennemy.name == "Gobelin" or ennemy.name == "Squelette" or ennemy.name == "Chauve-souris" or ennemy.name == "Araignee":
                 attack(personnage,ennemy)
         
         if ennemy.name == "Troll" :
@@ -404,6 +448,11 @@ def action(personnage,ennemy) :
         if ennemy.name == "Comte Vladimir" :
         
             if len([i for i in ennemy.listEnnemy if i != 0]) < 3 and randint(1,10) < 5 :
+                
+                window.blit(font.render("SUMMON !",True,(255,50,50)),(430,100))
+                pygame.display.flip()
+                time.sleep(1.2)
+                
                 count = 0
                 for pos,i in enumerate(ennemy.listEnnemy):
                     if i == 0 :
@@ -414,10 +463,44 @@ def action(personnage,ennemy) :
                 
             else :
                 attack(personnage,ennemy)
-       
+
+def victory():
+    spr_victoryScreen = pygame.image.load("Sprites/victory.jpg")
+    window.fill((0,0,0))
+    window.blit(spr_victoryScreen,(8,0))
+    pygame.display.flip()
+    loop = True
+    
+    while loop :
+        for event in pygame.event.get() :
+            pygame.display.flip()
+            
+            if event.type == pygame.QUIT :
+                pygame.quit()
+                exit()
+
+def defeat() :
+    spr_defeatScreen = pygame.image.load("Sprites/defeat.jpg")
+    window.fill((0,0,0))
+    window.blit(spr_defeatScreen,(123,0))
+    pygame.display.flip()
+    loop = True
+    
+    while loop :
+        for event in pygame.event.get() :
+            pygame.display.flip()
+            
+            if event.type == pygame.QUIT :
+                pygame.quit()
+                exit()
+      
 def gobelin(position) :
     
     return ennemy(position)
+
+def spider(position) :
+    
+    return ennemy(position,"Araignee",20,15)
 
 def skeleton(position) :
     

@@ -13,16 +13,17 @@ class weapon : #Définition de notre classe Weapon
         - presentation, qui affiche dans la console les atributs de l'arme (nom et dégats)
         - change, qui change l'arme en remplaçant ses attributs """
     
-    def __init__(self,name="Epée rouilée",damage=10,skill = 'Thunderstruck',cooldown = 5): #La métohde constructeur
+    def __init__(self,name="Epée rouilée",damage=10,skill = 'Thunderstruck',tempsCd = 5, cooldown = 0): #La métohde constructeur
         self.damage = damage
         self.name = name
         self.skill = skill
         self.cooldown = cooldown
+        self.tempsCd = tempsCd
     
     def presentation(self):
         print("Cette arme est" , self.name , ", une arme qui possède" , self.damage , "points de dégats et avec comme compétence :" ,self.skill)
     
-    def change(self,name = "Epee rouillé",damage = 10,skill = 'Thunderstruck',cooldown = 5):
+    def change(self,name = "Epee rouillé",damage = 10,skill = 'Thunderstruck',cooldown = 0):
         self.damage = damage
         self.name = name
         self.skill = skill
@@ -40,7 +41,10 @@ class backpack : #Définition de notre classe Backpack
         
         if self.potion != 0 :
             self.potion -= 1
-            character.hp += 30
+            if character.hp < 70 :
+                character.hp += 30
+            else :
+                character.hp = 100
             if not self.potion == 0 :
                 print("Tu te soignes de 30 pts de vie ! Tu as {0} pts de vie et {1} potions.".format(character.hp,self.potion))
             else :
@@ -93,12 +97,16 @@ class character :
         ennemy.listEnnemy[self.target].takeDamage(damage)
         
     def useSkill(self):
-        if self.weapon.skill == 'None' :
-            print("Rien ne se passe !")
-        if self.weapon.skill == 'Thunderstruck' :
-            self.changeTarget(askTarget(self))
-            self.dealSkillDamage(20)
-            
+        if self.weapon.cooldown == 0 :
+            self.weapon.cooldown = self.weapon.tempsCd
+            if self.weapon.skill == 'None' :
+                print("Rien ne se passe !")
+            if self.weapon.skill == 'Thunderstruck' :
+                self.changeTarget(askTarget(self))
+                self.dealSkillDamage(20)
+        else :
+            print("La compétence n'est pas encore rechargée !")
+                    
             
     def changeTarget(self,target):
         self.target = target
