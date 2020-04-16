@@ -117,13 +117,16 @@ def clrMap():
 def playerDraw(x,y):
     #TODO convert into coordinates with pixels
     window.blit(const.playerSprite1, (32*x, 32*y))
+
 def generateMap(level):
     global generated
-    for i in rand.choice(const.levels[level-1]):
-        if type(i) == tuple:
-            tile(i,(i==(player.x,player.y)))
-        elif type(i) == dict:
-            for coord, cont in i.items():
-                tile(coord, (coord==(player.x,player.y)), cont)
+    tileNumber = (19, 24, 34)
+    tile((player.x, player.y), True)
+    tile((15,7))
+    temp = [i for j in const.mape for i in j if i]
+    while len(temp) < tileNumber[level-1]:
+        print(temp)
+        rand.choice(temp).generate()
+        temp = [i for j in const.mape for i in j if i]
     player.tile.discover()
     generated = True

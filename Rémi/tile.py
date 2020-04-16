@@ -1,5 +1,6 @@
 import functions as f
 import constants as const
+import random as rand
 import pygame
 
 class tile:
@@ -72,3 +73,9 @@ class tile:
             text = const.font.render(temp[self.content],True,const.colorBlack)
             f.window.blit(const.keyESprite,(416,370))
             f.window.blit(text,(448,371))
+
+    def generate(self):
+        temp = [i for i in [(self.x,self.y-1),(self.x,self.y+1),(self.x-1,self.y),(self.x+1,self.y)] if const.mapf(i) == None]
+        if temp:
+            gen = rand.choice(temp)
+            tile(gen)
