@@ -51,3 +51,19 @@ hpOgre = 120
 damageOgre = 35
 summonOgre = "Gobelin"
 countOgre = 0
+
+#Initialisation de toutes les variables concernant Monsieur Fumée
+
+nameMsmoke = "Msmoke"
+hpMsmoke = 120
+damageMsmoke = 0
+summonMsmoke = 0
+countMsmoke = 0
+
+#Initialisation de toutes les variables concernant le Minotaure
+
+nameMinotaure = "Minotaure"
+hpMinotaure = 150
+damageMinotaure = 40
+summonMinotaure = 0
+countMinotaure = 0
