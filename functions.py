@@ -68,9 +68,9 @@ def gameLoop():
                     gameQuit = True
                     reset = True
                 if platform == 'linux':
-                    keys = {pygame.K_z:(player.y-1,player.x),pygame.K_s:(player.y+1,player.x),pygame.K_q:(player.y,player.x-1),pygame.K_d:(player.y,player.x+1)}
+                    keys = {pygame.K_UP:(player.y-1,player.x),pygame.K_DOWN:(player.y+1,player.x),pygame.K_LEFT:(player.y,player.x-1),pygame.K_RIGHT:(player.y,player.x+1)}
                 elif platform == 'win32':
-                    keys = {pygame.K_w:(player.y-1,player.x),pygame.K_s:(player.y+1,player.x),pygame.K_a:(player.y,player.x-1),pygame.K_d:(player.y,player.x+1)}
+                    keys = {pygame.K_UP:(player.y-1,player.x),pygame.K_DOWN:(player.y+1,player.x),pygame.K_LEFT:(player.y,player.x-1),pygame.K_RIGHT:(player.y,player.x+1)}
                 for key,cont in keys.items():
                     y,x = cont
                     if event.type == pygame.KEYDOWN and event.key == key and const.mape[y][x]:
