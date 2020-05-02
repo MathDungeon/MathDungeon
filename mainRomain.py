@@ -48,7 +48,7 @@ def combat() :
     if not personnage.life :
         defeat()
         
-    time.sleep(2.5)
+    time.sleep(2)
     
 
 def mob(etage) : 
