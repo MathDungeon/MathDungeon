@@ -5,7 +5,8 @@ Code by Léo
 import pygame, sys                #J'importe les modules et les fichiers dont j'ai besoin
 from pygame.locals import *
 from ennemy import *
-from functions import * 
+from functions import *
+from romainFunctions import * 
 from constantFight import *
 from character import *
 
@@ -16,13 +17,12 @@ Ce ficher sert à créer le menu du marchand via lequel le joueur pourra acheter
 spr_menu = pygame.image.load("Sprites/menu.png")                     #J'importe les images dont j'ai besoin et je les associe à une variable
 spr_curseur = pygame.image.load("Sprites/test_curseur_jaune.png")
 
-def menuMarchand():
+def menuMarchand(player):
     pygame.init()   #On initialise pygame
 
     window = pygame.display.set_mode((928,512)) #On crée la fenêtre de jeu
 
     WHITE = (255,255,255)           #Je crée les variables que j'utiliserai plus tard
-    personnage = character()
     cursor = 0
     gold = 500
     sousMenu = False
@@ -41,6 +41,7 @@ def menuMarchand():
     loop = True
     
     while loop:
+
         for event in pygame.event.get():
             if event.type == QUIT:        #Cette boucle sert à quitter la fenêtre si le joueur clique sur la croix
                 pygame.quit()
@@ -102,17 +103,17 @@ def menuMarchand():
                         loop = False
                     
                 if event.key == pygame.K_RETURN and sousMenu == True and cursor == 1 :                #Ces trois boucles servent à acheter les objets et à verifier si le joueur a assez d'argent et s'il n'a pas déjà ces objets
-                    if personnage.weapon.name == 'Epée en fer' :
+                    if player.weapon.name == 'Epée en fer' :
                         window.blit(font2.render('Vous possédez déjà', False, (255,255,255)),(48,327))
                         window.blit(font2.render('cette arme', False, (255,255,255)),(98,347))
                     elif gold < 100 :
                         window.blit(font4.render("Pas assez d'argent", False, (255,255,255)),(54,347))
                     else :
                         window.blit(font3.render('Epée Achetée !', False, (255,255,255)),(58,343))
-                        personnage.weapon = weapon(name='Epée en fer', damage = 10, skill = 'Thunderstruck', tempsCd = 5)
+                        player.weapon = weapon(name='Epée en fer', damage = 10, skill = 'Thunderstruck', tempsCd = 5)
                         gold -= 100
                 if event.key == pygame.K_RETURN and sousMenu == True and cursor == 3 :
-                    if personnage.weapon.name == 'Katana Légendaire' :
+                    if player.weapon.name == 'Katana Légendaire' :
                         window.blit(font2.render('Vous possédez déjà', False, (255,255,255)),(48,327))
                         window.blit(font2.render('cette arme', False, (255,255,255)),(98,347))
                     elif gold < 250 :
@@ -120,16 +121,16 @@ def menuMarchand():
                     else :
                         window.blit(font3.render('Katana Acheté !', False, (255,255,255)),(52,343))
                         gold = gold - 250
-                        personnage.weapon = weapon(name='Katana Légendaire', damage = 15 , skill = 'Thunderstruck', tempsCd = 5)
+                        player.weapon = weapon(name='Katana Légendaire', damage = 15 , skill = 'Thunderstruck', tempsCd = 5)
                 if event.key == pygame.K_RETURN and sousMenu == True and cursor == 5 :
-                    if personnage.backpack.potion == 5 :
+                    if player.backpack.potion == 5 :
                         window.blit(font2.render('Vous possédez déjà', False, (255,255,255)),(48,327))
                         window.blit(font2.render('5 potions', False, (255,255,255)),(98,347))
                     elif gold < 30 :
                         window.blit(font4.render("Pas assez d'argent", False, (255,255,255)),(54,347))
                     else :
                         window.blit(font3.render('Potion Achetée !', False, (255,255,255)),(45,343))
-                        personnage.backpack.potion += 1
+                        player.backpack.potion += 1
                         gold = gold - 30
                 
                 if event.key == pygame.K_RETURN and sousMenu == False :  #Cette boucle sert au programme de savoir si le joueur est dans le sous-menu ou non (cette boucle est à la fin car sinon le programme ne marche pas correctement)

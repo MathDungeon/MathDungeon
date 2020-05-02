@@ -98,7 +98,7 @@ def gameLoop():
                                 if level == 4:
                                     rom1.boss(level)
                             if player.tile.content == "Shop":
-                                menuMarchand()
+                                menuMarchand(player)
             if not (generated or level == 4):
                 generateMap(level)
             draw()
