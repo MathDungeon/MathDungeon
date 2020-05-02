@@ -124,6 +124,11 @@ def generateMap(level):
         rand.choice(temp).generate()
         temp = [i for j in const.mape for i in j if i]
     player.tile.discover()
-    rand.choice(temp).content = "Boss"
-    rand.choice(temp).content = "Shop"
+    temp = [i for j in const.mape for i in j if i]
+    temp = [i for i in temp if i.neighborsNb == 1]
+    boss = rand.randrange(len(temp))
+    temp.pop(boss).content = "Boss"
+    shop = rand.randrange(len(temp))
+    temp.pop(shop).content = "Shop"
     generated = True
+    temp = rand.choice(temp)

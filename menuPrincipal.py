@@ -5,7 +5,7 @@ from pygame.locals import *
 Ce ficher sert à créer le menu principal via lequel le joueur va accéder au jeu
 """
 
-spr_curseur = pygame.image.load("sprite/test_curseur_jaune.png") #J'importe les images dont j'ai besoin et je les associe à une variable
+spr_curseur = pygame.image.load("Sprites/test_curseur_jaune.png") #J'importe les images dont j'ai besoin et je les associe à une variable
 
 def menuPrincipal():
     pygame.init() #On initialise pygame
