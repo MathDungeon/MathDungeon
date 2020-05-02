@@ -724,7 +724,14 @@ def action(personnage,ennemy) :
                 else : #Sinon, il attaque simplement une fois
                     
                     attack(personnage,ennemy)
-                    
+        
+        if ennemy.name == "Minotaure" :
+            
+            for x in range (0,5) : 
+                redrawBoard(personnage)
+                time.sleep(0.2)
+                attackFinal(personnage,ennemy)
+        
         if ennemy.name == "Msmoke" : 
             
             window.blit(font.render("ATTAQUE ESQUIVE...",True,(50,50,255)),(380,100))
@@ -771,12 +778,7 @@ def action(personnage,ennemy) :
                 ennemy.damage = damageMinotaure
                 ennemy.hp = hpMinotaure
                 
-        if ennemy.name == "Minotaure" :
-            
-            for x in range (0,5) : 
-                redrawBoard(personnage)
-                time.sleep(0.2)
-                attackFinal(personnage,ennemy)
+        
                 
             
         
