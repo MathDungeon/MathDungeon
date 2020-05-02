@@ -9,6 +9,10 @@ from functions import *
 from constantFight import *
 from character import *
 
+"""
+Ce ficher sert à créer le menu du marchand via lequel le joueur pourra acheter des objets
+"""
+
 spr_menu = pygame.image.load("Sprites/menu.png")                     #J'importe les images dont j'ai besoin et je les associe à une variable
 spr_curseur = pygame.image.load("Sprites/test_curseur_jaune.png")
 
