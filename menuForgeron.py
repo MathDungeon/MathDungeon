@@ -1,10 +1,17 @@
 # -*- coding: utf-8 -*-
+"""
+Code by Léo
+"""
 import pygame, sys                   #J'importe les modules et les fichiers dont j'ai besoin
 from pygame.locals import *
 from ennemy import *
 from functions import * 
 from constantFight import *
-from character import *                                    
+from character import *
+
+"""
+Ce ficher sert à créer le menu du forgeron via lequel le joueur pourra améliorer son arme
+"""
 
 spr_menu = pygame.image.load("Sprites/menu.png")                        #J'importe les images dont j'ai besoin et je les associe à une variable
 spr_curseur = pygame.image.load("Sprites/test_curseur_jaune.png")

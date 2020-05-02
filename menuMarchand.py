@@ -1,10 +1,17 @@
 # -*- coding: utf-8 -*-
+"""
+Code by Léo
+"""
 import pygame, sys                #J'importe les modules et les fichiers dont j'ai besoin
 from pygame.locals import *
 from ennemy import *
 from functions import * 
 from constantFight import *
 from character import *
+
+"""
+Ce ficher sert à créer le menu du marchand via lequel le joueur pourra acheter des objets
+"""
 
 spr_menu = pygame.image.load("Sprites/menu.png")                     #J'importe les images dont j'ai besoin et je les associe à une variable
 spr_curseur = pygame.image.load("Sprites/test_curseur_jaune.png")
@@ -127,5 +134,6 @@ def menuMarchand():
                 
                 if event.key == pygame.K_RETURN and sousMenu == False :  #Cette boucle sert au programme de savoir si le joueur est dans le sous-menu ou non (cette boucle est à la fin car sinon le programme ne marche pas correctement)
                     sousMenu = True
-                
+
         pygame.display.update()   #Cette commande sert à actualiser la fenêtre de jeu
+
