@@ -35,8 +35,6 @@ def gameInit():
     window = pygame.display.set_mode((const.weight, const.height))
     rand.seed()
 
-    pygame.display.set_caption("MathDungeon")
-
 def draw():
     #Clear BG
     window.fill(const.defaultBGColor)
@@ -123,15 +121,22 @@ def generateMap(level):
     tileNumber = (19, 24, 34,1)
     tile((player.x, player.y), True)
     tile((15,7))
-    temp = [i for j in const.mape for i in j if i]
-    while len(temp) < tileNumber[level-1]:
-        rand.choice(temp).generate()
-        temp = [i for j in const.mape for i in j if i]
-    player.tile.discover()
-    temp = [i for j in const.mape for i in j if i]
-    temp = [i for i in temp if i.neighborsNb == 1]
-    boss = rand.randrange(len(temp))
-    temp.pop(boss).content = "Boss"
-    shop = rand.randrange(len(temp))
-    temp.pop(shop).content = "Shop"
+    loop = True
+    while loop:
+        try:
+            temp = [i for j in const.mape for i in j if i]
+            while len(temp) < tileNumber[level-1]:
+                rand.choice(temp).generate()
+                temp = [i for j in const.mape for i in j if i]
+            player.tile.discover()
+            temp = [i for j in const.mape for i in j if i]
+            temp = [i for i in temp if i.neighborsNb == 1]
+            boss = rand.randrange(len(temp))
+            temp.pop(boss).content = "Boss"
+            shop = rand.randrange(len(temp))
+            temp.pop(shop).content = "Shop"
+        except ValueError:
+            loop = True
+        else:
+            loop = False
     generated = True

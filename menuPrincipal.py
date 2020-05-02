@@ -10,13 +10,13 @@ from main import *
 Ce ficher sert à créer le menu principal via lequel le joueur va accéder au jeu
 """
 
-spr_curseur = pygame.image.load("sprite/test_curseur_jaune.png") #J'importe les images dont j'ai besoin et je les associe à une variable
+spr_curseur = pygame.image.load("Sprites/test_curseur_jaune.png") #J'importe les images dont j'ai besoin et je les associe à une variable
 
 def menuPrincipal():
     pygame.init() #On initialise pygame
 
     window = pygame.display.set_mode((928,512)) #On crée la fenêtre de jeu
-
+    pygame.display.set_caption("MathDungeon")   #On change le titre
     BLACK=(0,0,0)                               #Je crée les variables que j'utiliserai plus tard
     MPcursor = 1
     
