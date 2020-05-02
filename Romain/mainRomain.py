@@ -69,6 +69,7 @@ def mob(etage) :
         ennemy.listEnnemy[x] = chosenListEnnemy[x]
         
     combat()
+    personnage.gold += 30
 
 def boss(etage) :
     
@@ -85,6 +86,7 @@ def boss(etage) :
         ennemy.listEnnemy[2] = Msmoke(2)
         
     combat()
+    personnage.gold += 80
 
  
 
