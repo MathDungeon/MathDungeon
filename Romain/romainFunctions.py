@@ -106,27 +106,27 @@ def drawEnnemy() :
             if mechant.name == "Msmoke" or mechant.name == "Msmoke2"  or mechant.name == "Msmoke3" or mechant.name == "Msmoke4" : 
                 
                 window.blit(spr_Msmoke,(-10+pos*186,110))
-                window.blit(font.render("Hp : " + str(mechant.hp) + "/" + str(hpOgre),True,(150,150,150)),(40+pos*186,357))
+                window.blit(font.render("Hp : " + str(mechant.hp) + "/" + str(hpMsmoke),True,(150,150,150)),(40+pos*186,357))
                 
             if mechant.name == "Msmoke_vladimir" :
                 
                 window.blit(spr_vampire,(30+pos*186,135))
-                window.blit(font.render("Hp : " + str(mechant.hp) + "/" + str(hpOgre),True,(150,150,150)),(55+186*pos,350))
+                window.blit(font.render("Hp : " + str(mechant.hp) + "/" + str(hpMsmoke),True,(150,150,150)),(55+186*pos,350))
                 
             if mechant.name == "Msmoke_sorciere" :
                 
                 window.blit(spr_witch,(20+pos*186,140))
-                window.blit(font.render("Hp : " + str(mechant.hp) + "/" + str(hpOgre),True,(150,150,150)),(35+pos*186,323))
+                window.blit(font.render("Hp : " + str(mechant.hp) + "/" + str(hpMsmoke),True,(150,150,150)),(35+pos*186,323))
                 
             if mechant.name == "Msmoke_ogre" :
                 
                 window.blit(spr_ogre,(5+pos*186,140))
-                window.blit(font.render("Hp : " + str(mechant.hp) + "/" + str(hpOgre),True,(150,150,150)),(35+pos*186,350))
+                window.blit(font.render("Hp : " + str(mechant.hp) + "/" + str(hpMsmoke),True,(150,150,150)),(35+pos*186,350))
                 
             if mechant.name == "Minotaure" :
                 
                 window.blit(spr_minotaure,(-17+pos*186,100))
-                window.blit(font.render("Hp : " + str(mechant.hp) + "/" + str(hpOgre),True,(150,150,150)),(40+pos*186,357))
+                window.blit(font.render("Hp : " + str(mechant.hp) + "/" + str(hpMinotaure),True,(150,150,150)),(40+pos*186,357))
 
  
 """
@@ -592,10 +592,10 @@ def attackFinal(personnage,ennemy):
     pygame.display.flip()  
              
     loop = True
-    timer = 1
+    timerFinal = 1
     damages = True
         
-    pygame.time.set_timer(timer+1,2000)    #On met un évenement timer qui s'activera aux bout de 2000 ms, Cela permet de faire un QTE
+    pygame.time.set_timer(timerFinal+1,2000)    #On met un évenement timer qui s'activera aux bout de 2000 ms, Cela permet de faire un QTE
         
     while loop :
             
@@ -612,7 +612,7 @@ def attackFinal(personnage,ennemy):
                     loop = False    #On peut sortir de la boucle
                     damages = False     #On ne peut plus se prendre de dégâts
                 
-            if event.type == timer+1 :    #Quand l'évenement se déclenche, le temps est donc écoulé
+            if event.type == timerFinal+1 :    #Quand l'évenement se déclenche, le temps est donc écoulé
                 redrawBoardNoHP()
                 pygame.display.flip()
                 if damages :     #Si l'on a pas appuyé sur la touche, on se prend des dégâts
@@ -727,7 +727,15 @@ def action(personnage,ennemy) :
                 else : #Sinon, il attaque simplement une fois
                     
                     attack(personnage,ennemy)
-                    
+        
+        if ennemy.name == "Minotaure" :
+            
+            for x in range (0,4) :
+                attackFinal(personnage,ennemy)
+                redrawBoard(personnage)
+                time.sleep(0.2)
+            attackFinal(personnage,ennemy)
+           
         if ennemy.name == "Msmoke" : 
             
             window.blit(font.render("ATTAQUE ESQUIVE...",True,(50,50,255)),(380,100))
@@ -771,16 +779,11 @@ def action(personnage,ennemy) :
                 time.sleep(2)
             
                 ennemy.name = "Minotaure"
-                ennemy.damage = 40
-                ennemy.hp = 100
+                ennemy.damage = damageMinotaure
+                ennemy.hp = hpMinotaure
                 
-        if ennemy.name == "Minotaure" :
-            
-            for x in range (0,5) : 
-                redrawBoard(personnage)
-                time.sleep(0.2)
-                attackFinal(personnage,ennemy)
-                
+        
+        
             
         
 def victory():    #Affiche un écran de victoire lorsque le combat est gagné
