@@ -1,6 +1,8 @@
 from ennemy import *
-from functions import * 
+from romainFunctions import * 
 from constantFight import *
+import functions as f
+import constants as const
 
 
 class weapon : #Définition de notre classe Weapon
@@ -82,7 +84,10 @@ class character :
     """
     
     #Initialisation de la classe
-    def __init__(self,name="Michel",hp = 100,weapon = weapon(),backpack = backpack(),gold = 0,life = True,target = 2):
+    def __init__(self,name="Michel",hp = 100,weapon = weapon(),backpack = backpack(),gold = 0,life = True,target = 2, coordinates = (14,7)):
+        x,y = coordinates
+        self.x = x
+        self.y = y
         self.name = name
         self.hp = hp
         self.gold = gold
@@ -90,6 +95,9 @@ class character :
         self.backpack = backpack
         self.life = life
         self.target = target
+        self.x = x
+        self.y = y
+        self.tile = const.mape[self.y][self.x]
         
     
     #Méthodes de classe
@@ -117,4 +125,10 @@ class character :
             
     def changeTarget(self,target):
         self.target = target
-            
+    
+    def move(self,x,y):
+        self.x = x
+        self.y = y
+        self.x = f.varFraming(self.x, 0, const.cWeight)
+        self.y = f.varFraming(self.y, 0, const.cHeight)
+        self.tile = const.mape[self.y][self.x]

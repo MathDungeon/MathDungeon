@@ -244,9 +244,6 @@ def windowInitialisation(personnage) :
     window.blit(font.render("Hp : " + str(personnageFunctions.hp) + "/100",True,(255,255,255)),(350,40))
           
     drawEnnemy()
-    
-    pygame.display.set_caption("Combat !")                
-
 
 #Cette fonction permet de choisir notre action lors du début du combat
 def askAction() :

@@ -6,6 +6,7 @@ import pygame
 import constants as const
 import character as ch
 import random as rand
+import mainRomain as rom1
 from sys import exit,platform
 from tile import tile
 
@@ -76,10 +77,7 @@ def gameLoop():
                         player.move(x,y)
                         player.tile.discover()
                         if player.tile.content == "Boss":
-                            fightBoss = True
-                            """
-                            Combat de boss
-                            """
+                            rom1.boss(level)
                             player.tile.content = "Defeated_Boss"
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
                     clrMap()

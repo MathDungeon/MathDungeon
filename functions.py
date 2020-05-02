@@ -6,6 +6,8 @@ import pygame
 import constants as const
 import character as ch
 import random as rand
+import mainRomain as rom1
+from menuMarchand import *
 from sys import exit,platform
 from tile import tile
 
@@ -31,7 +33,9 @@ def gameInit():
     #Initialize pygame and window
     pygame.init()
     window = pygame.display.set_mode((const.weight, const.height))
-    rand.seed(30)
+    rand.seed()
+
+    pygame.display.set_caption("MathDungeon")
 
 def draw():
     #Clear BG
@@ -51,7 +55,6 @@ def draw():
 
 def gameLoop():
     #Initialize gameQuit boolean that breaks the loop
-    Clock = pygame.time.Clock()
     gameQuit = False
     while not gameQuit:
         level = 1
@@ -76,10 +79,7 @@ def gameLoop():
                         player.move(x,y)
                         player.tile.discover()
                         if player.tile.content == "Boss":
-                            fightBoss = True
-                            """
-                            Combat de boss
-                            """
+                            rom1.boss(level)
                             player.tile.content = "Defeated_Boss"
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
                     clrMap()
@@ -95,7 +95,11 @@ def gameLoop():
                                 level += 1
                                 player.move(14,7)
                                 clrMap()
-            if not generated:
+                                if level == 4:
+                                    rom1.boss(level)
+                            if player.tile.content == "Shop":
+                                menuMarchand()
+            if not (generated or level == 4):
                 generateMap(level)
             draw()
     clrMap()
@@ -116,7 +120,7 @@ def playerDraw(x,y):
 
 def generateMap(level):
     global generated
-    tileNumber = (19, 24, 34)
+    tileNumber = (19, 24, 34,1)
     tile((player.x, player.y), True)
     tile((15,7))
     temp = [i for j in const.mape for i in j if i]
@@ -124,6 +128,10 @@ def generateMap(level):
         rand.choice(temp).generate()
         temp = [i for j in const.mape for i in j if i]
     player.tile.discover()
-    rand.choice(temp).content = "Boss"
-    rand.choice(temp).content = "Shop"
+    temp = [i for j in const.mape for i in j if i]
+    temp = [i for i in temp if i.neighborsNb == 1]
+    boss = rand.randrange(len(temp))
+    temp.pop(boss).content = "Boss"
+    shop = rand.randrange(len(temp))
+    temp.pop(shop).content = "Shop"
     generated = True

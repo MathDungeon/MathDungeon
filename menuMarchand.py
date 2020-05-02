@@ -31,7 +31,9 @@ def menuMarchand():
     window.blit(spr_curseur,(80,45))
     window.blit(font1.render('ACHETER', False, (255,255,255)),(102,45))
 
-    while True:
+    loop = True
+    
+    while loop:
         for event in pygame.event.get():
             if event.type == QUIT:        #Cette boucle sert à quitter la fenêtre si le joueur clique sur la croix
                 pygame.quit()
@@ -90,7 +92,7 @@ def menuMarchand():
                         window.blit(font1.render('ACHETER', False, (255,255,255)),(102,45))
                         sousMenu = False
                     else :                   #Cette boucle sert à quitter le menu
-                        window.fill(WHITE)
+                        loop = False
                     
                 if event.key == pygame.K_RETURN and sousMenu == True and cursor == 1 :                #Ces trois boucles servent à acheter les objets et à verifier si le joueur a assez d'argent et s'il n'a pas déjà ces objets
                     if personnage.weapon.name == 'Epée en fer' :
@@ -127,5 +129,3 @@ def menuMarchand():
                     sousMenu = True
                 
         pygame.display.update()   #Cette commande sert à actualiser la fenêtre de jeu
-
-menuMarchand()
