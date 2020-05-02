@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""
+Code by Léo
+"""
 import pygame, sys                         #J'importe les modules et les fichiers dont j'ai besoin
 from pygame.locals import *
 from main import *
