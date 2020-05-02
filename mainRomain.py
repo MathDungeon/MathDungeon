@@ -2,7 +2,6 @@ from character import *
 from ennemy import *
 from romainFunctions import *
 from constantFight import *
-from menuPrincipal import *
 import random
 
 personnage = character()
