@@ -24,11 +24,14 @@ class tile:
         self.down = const.mape[self.y + 1][self.x]
         self.left = const.mape[self.y][self.x - 1]
         self.right = const.mape[self.y][self.x + 1]
-        temp = [i for i in [self.up, self.down, self.left, self.right] if i]
-        self.neighborsNb = len(temp)
-        for i in temp:
-            i.update()
-        del temp
+        if self.up:
+            self.up.down = self
+        if self.down:
+            self.down.up = self
+        if self.left:
+            self.left.right = self
+        if self.right:
+            self.right.left = self
         if (self.x,self.y)==(f.player.x,f.player.y):
             f.player.tile = self
 
@@ -76,11 +79,3 @@ class tile:
         if temp:
             gen = rand.choice(temp)
             tile(gen)
-
-    def update(self):
-        self.up = const.mape[self.y - 1][self.x]
-        self.down = const.mape[self.y + 1][self.x]
-        self.left = const.mape[self.y][self.x - 1]
-        self.right = const.mape[self.y][self.x + 1]
-        temp = [i for i in [self.up, self.down, self.left, self.right] if i]
-        self.neighborsNb = len(temp)
