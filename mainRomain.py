@@ -86,6 +86,10 @@ def boss(etage) :
         ennemy.listEnnemy[2] = Msmoke(2)
         
     combat()
+    
+    if etage == 4:
+        menuPrincipal()
+        
     personnage.gold += 80
 
  
