@@ -86,8 +86,7 @@ def boss(etage) :
         
     combat()
 
-boss(4)
-pygame.quit()  
+ 
 
             
             
