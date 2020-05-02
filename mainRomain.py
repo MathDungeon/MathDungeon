@@ -4,9 +4,6 @@ from romainFunctions import *
 from constantFight import *
 import random
 
-personnage = character()
-windowInitialisation(personnage)
-
 def combat() :
     
     while personnage.life :
