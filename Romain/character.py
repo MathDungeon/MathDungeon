@@ -1,5 +1,5 @@
 from ennemy import *
-from functions import * 
+from romainFunctions import * 
 from constantFight import *
 
 
@@ -82,9 +82,10 @@ class character :
     """
     
     #Initialisation de la classe
-    def __init__(self,name="Michel",hp = 100,weapon = weapon(),backpack = backpack(),life = True,target = 2):
+    def __init__(self,name="Michel",hp = 100,weapon = weapon(),backpack = backpack(),gold = 0life = True,target = 2):
         self.name = name
         self.hp = hp
+        self.gold = gold
         self.weapon = weapon
         self.backpack = backpack
         self.life = life

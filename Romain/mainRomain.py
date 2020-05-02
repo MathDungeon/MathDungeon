@@ -1,6 +1,6 @@
 from character import *
 from ennemy import *
-from functions import *
+from romainFunctions import *
 from constantFight import *
 import random
 
@@ -69,6 +69,7 @@ def mob(etage) :
         ennemy.listEnnemy[x] = chosenListEnnemy[x]
         
     combat()
+    personnage.gold += 30
 
 def boss(etage) :
     
@@ -85,9 +86,9 @@ def boss(etage) :
         ennemy.listEnnemy[2] = Msmoke(2)
         
     combat()
+    personnage.gold += 80
 
-boss(4)
-pygame.quit()  
+ 
 
             
             
