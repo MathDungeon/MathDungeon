@@ -88,9 +88,6 @@ def boss(etage) :
         
     combat()
     
-    if etage == 4:
-        menuPrincipal()
-        
     personnage.gold += 80
 
  
