@@ -1,0 +1,19 @@
+body
+{
+background-color:  #df7862 ;
+}
+h1
+{
+text-decoration: underline;
+text-align: center;
+}
+.lien_jeu
+{
+text-align: center;
+font-size: 98;
+font-weight: bold;
+font-family: sans-serif;
+border-width: 2px;
+border-color: black;
+border-style: solid;
+}
