@@ -1,6 +1,7 @@
 from character import *
 from constantFight import *
 from random import randint
+from menuPrincipal import *
 import time
 import pygame
 
@@ -796,6 +797,7 @@ def defeat() :    #Affiche un écran de défaite lorsque le combat est perdu
     window.blit(spr_defeatScreen,(123,0))
     pygame.display.flip()
     loop = True
+    menuPrincipal()
                     
                 
 #Finalement, toutes ces fonctions servent à invoquer plus facilement un ennemi en marquant simplement son nom.               
