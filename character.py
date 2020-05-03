@@ -88,7 +88,7 @@ class character :
     """
     
     #Initialisation de la classe
-    def __init__(self,name="Michel",hp = 100,weapon = weapon(damage = 120),backpack = backpack(),gold = 0,life = True,target = 2, coordinates = (14,7)):
+    def __init__(self,name="Michel",hp = 100,weapon = weapon(),backpack = backpack(),gold = 0,life = True,target = 2, coordinates = (14,7)):
         x,y = coordinates
         self.x = x
         self.y = y
