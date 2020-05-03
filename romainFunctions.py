@@ -515,7 +515,8 @@ def attack(personnage,ennemy):
                 loop = False    #On arrête la boucle
                 break
           
-            
+#Cette fonction est utilisée pour le boss final.
+#Elle est sensiblement semblable à celle du dessus, ormis que ici, le choix est entre toutes les touches 
 def attackFinal(personnage,ennemy):
     
     global window
@@ -726,14 +727,14 @@ def action(personnage,ennemy) :
                     
                     attack(personnage,ennemy)
         
-        if ennemy.name == "Minotaure" :
+        if ennemy.name == "Minotaure" :   #On attaque l'ennemi 5 fois d'affilées
             
             for x in range (0,5) : 
                 redrawBoard(personnage)
                 time.sleep(0.2)
                 attackFinal(personnage,ennemy)
         
-        if ennemy.name == "Msmoke" : 
+        if ennemy.name == "Msmoke" :  #Msmoke ne peut pas prendre de dégats, il esquivera, se transformera et changera en Msmoke_vladimir
             
             window.blit(font.render("ATTAQUE ESQUIVE...",True,(50,50,255)),(380,100))
             pygame.display.flip()
@@ -748,7 +749,7 @@ def action(personnage,ennemy) :
             ennemy.name = "Msmoke_vladimir"
             ennemy.summon = "Bat"
             
-        if ennemy.name == "Msmoke2" :
+        if ennemy.name == "Msmoke2" :  #De même, en se transformant en Msmoke_sorciere
             
             if len([i for i in ennemy.listEnnemy if i != 0 ]) == 1 :
                 window.blit(font.render("TRANSFORMATION !",True,(255,50,50)),(380,100))
@@ -758,7 +759,7 @@ def action(personnage,ennemy) :
                 ennemy.name = "Msmoke_sorciere"
                 ennemy.summon = summonWitch
                 
-        if ennemy.name == "Msmoke3" :
+        if ennemy.name == "Msmoke3" :  #Idem, en se transformant en Msmoke_ogre
             
             if len([i for i in ennemy.listEnnemy if i != 0 ]) == 1 :
                 window.blit(font.render("TRANSFORMATION !",True,(255,50,50)),(380,100))
@@ -768,7 +769,7 @@ def action(personnage,ennemy) :
                 ennemy.name = "Msmoke_ogre"
                 ennemy.summon = summonOgre
          
-        if ennemy.name == "Msmoke4" :
+        if ennemy.name == "Msmoke4" :  #De même, en se transformant en minotaure
             
             if len([i for i in ennemy.listEnnemy if i != 0 ]) == 1 :
                 window.blit(font.render("TRANSFORMATION !",True,(255,50,50)),(380,100))
