@@ -115,7 +115,6 @@ class character :
     def dealDamage(self):
         ennemy.listEnnemy[self.target].takeDamage(self.weapon.damage)
     
-    #RestezChezVous, et prenez soin de vous :)
     def dealSkillDamage(self,damage = 5):
         ennemy.listEnnemy[self.target].takeDamage(damage)
         
@@ -126,7 +125,7 @@ class character :
                 self.changeTarget(askTarget(self))
                 self.dealSkillDamage(20)
                     
-            
+    #Permet de changer l'attribut target de manière plus organisée        
     def changeTarget(self,target):
         self.target = target
     
