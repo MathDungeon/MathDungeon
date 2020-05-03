@@ -43,19 +43,21 @@ class ennemy :
     #Méthodes de classe
     def takeDamage(self,damage):
         
+        #Pour les 3 formes de boss finales, la mort provoque le passage à la phase suivante :
+        #Ainsi on limite le nombre de points de vie perdus, et la mort provoque le changement de phase
         if self.name == "Msmoke_vladimir" :
             
             self.hp -= damage
         
-            if self.hp <= 80 :  # Si l'ennemi meurt :
+            if self.hp <= 80 :  # Si l'ennemi depasse le seuil des 80 hps :
                 self.hp = 80
-                self.name = "Msmoke2"
+                self.name = "Msmoke2"  #On change son nom, qui changera aussi ses actions
         
         elif self.name == "Msmoke_sorciere" :
             
             self.hp -= damage
         
-            if self.hp <= 40 :  # Si l'ennemi meurt :
+            if self.hp <= 40 :  # Idem
                 self.hp = 40
                 self.name = "Msmoke3"  
                 
@@ -63,7 +65,7 @@ class ennemy :
             
             self.hp -= damage
         
-            if self.hp <= 0 :  # Si l'ennemi meurt :
+            if self.hp <= 0 :  # Idem
                 self.hp = 0
                 self.name = "Msmoke4"
         
