@@ -1,6 +1,7 @@
 from character import *
 from constantFight import *
 from random import randint
+from menuPrincipal import *
 import time
 import pygame
 
