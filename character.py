@@ -23,12 +23,13 @@ class weapon : #Définition de notre classe Weapon
                 
     """
     #Initialisation de la classe
-    def __init__(self,name="Epée rouilée",damage=10,skill = 'Thunderstruck',tempsCd = 5): #La méthode constructeur
+    def __init__(self,name="Epée rouilée",damage=10,skill = 'Thunderstruck',tempsCd = 5, level = 0): #La méthode constructeur
         self.damage = damage
         self.name = name
         self.skill = skill
         self.tempsCd = tempsCd
         self.cooldown = 0
+        self.level = level
     
     #Méthodes de classe
     def change(self,name = "Epee rouillé",damage = 10,skill = 'Thunderstruck',tempsCd = 5):

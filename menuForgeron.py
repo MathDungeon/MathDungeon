@@ -16,16 +16,13 @@ Ce ficher sert à créer le menu du forgeron via lequel le joueur pourra amélio
 spr_menu = pygame.image.load("Sprites/menu.png")                        #J'importe les images dont j'ai besoin et je les associe à une variable
 spr_curseur = pygame.image.load("Sprites/test_curseur_jaune.png")
 
-def menuForgeron():
+def menuForgeron(personnage):
     pygame.init()   #On initialise pygame
 
     window = pygame.display.set_mode((928,512))   #On crée la fenêtre de jeu
 
-    WHITE = (255,255,255)                                                                         #Je crée les variables que j'utiliserai plus tard
-    personnage = character()
-    levelWeapon = 0
+    WHITE = (255,255,255)
     gold = 500
-    personnage.weapon = weapon(name='Epée rouillée', damage=5, skill='Thunderstruck', tempsCd=5)
     sousMenu = False
 
     window.fill(WHITE)
@@ -38,7 +35,9 @@ def menuForgeron():
     window.blit(spr_curseur,(60,45))
     window.blit(font1.render('AMELIORER', False, (255,255,255)),(82,45))
 
-    while True:
+    loop = True
+
+    while loop:
         for event in pygame.event.get():
             if event.type == QUIT:            #Cette boucle sert à quitter la fenêtre si le joueur clique sur la croix
                 pygame.quit()
@@ -66,12 +65,12 @@ def menuForgeron():
                         window.blit(font1.render('AMELIORER', False, (255,255,255)),(82,45))
                         sousMenu = False
                     else :                #Cette boucle sert à quitter le menu
-                        window.fill(WHITE)
+                        loop = False
                     
                 if event.key == pygame.K_RETURN and sousMenu == True :   #Cette boucle sert à améliorer l'arme et à vérifier si le joueur a assez d'argent et si l'arme n'est pas déjà améliorer au maximum
-                    levelWeapon += 1
-                    if levelWeapon > 3:
-                        levelWeapon = 3
+                    personnage.weapon.level += 1
+                    if personnage.weapon.level > 3:
+                        personnage.weapon.level = 3
                         window.blit(spr_menu,(30,30))
                         window.blit(font1.render('AMELIORER', False, (255,255,255)),(82,45))
                         window.blit(spr_curseur,(40,114))
@@ -99,11 +98,11 @@ def menuForgeron():
                             window.blit(font2.render('Katana Légendaire', False, (255,255,255)),(62,118))
                         window.blit(font2.render("L'arme a été", False, (255,255,255)),(42,205))
                         window.blit(font2.render("améliorée", False, (255,255,255)),(42,225))
-                        if levelWeapon == 1 :
+                        if personnage.weapon.level == 1 :
                             window.blit(font2.render("(lvl: 1)", False, (255,255,255)),(42,265))
-                        elif levelWeapon == 2 :
+                        elif personnage.weapon.level == 2 :
                             window.blit(font2.render("(lvl: 2)", False, (255,255,255)),(42,265))
-                        elif levelWeapon == 3 :
+                        elif personnage.weapon.level == 3 :
                             window.blit(font2.render("(lvl: 3)", False, (255,255,255)),(42,265))
                         
                     
@@ -111,5 +110,3 @@ def menuForgeron():
                     sousMenu = True
                 
         pygame.display.update()   #Cette commande sert à actualiser la fenêtre de jeu
-
-menuForgeron()

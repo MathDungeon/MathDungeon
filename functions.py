@@ -8,6 +8,7 @@ import character as ch
 import random as rand
 import mainRomain as rom1
 from menuMarchand import *
+from menuForgeron import *
 from sys import exit,platform
 from tile import tile
 
@@ -100,12 +101,14 @@ def gameLoop():
                                     rom1.boss(level)
                             if player.tile.content == "Shop":
                                 menuMarchand(player)
+                            if player.tile.content == "Blacksmith":
+                                menuForgeron(player)
             if not (generated or level == 4):
                 generateMap(level)
             draw()
+            if level == 4:
+                gameQuit = True
     clrMap()
-    pygame.quit()
-    exit()
 
 def clrMap():
     global generated
@@ -139,6 +142,8 @@ def generateMap(level):
             temp.pop(boss).content = "Boss"
             shop = rand.randrange(len(temp))
             temp.pop(shop).content = "Shop"
+            blacksmith = rand.randrange(len(temp))
+            temp.pop(blacksmith).content = "Blacksmith"
         except ValueError:
             loop = True
         else:

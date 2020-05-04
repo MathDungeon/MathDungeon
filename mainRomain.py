@@ -12,7 +12,7 @@ windowInitialisation(personnage)
 def combat() :
     player = f.player
 
-    while player.life : #Tant que le personnage est en vie
+    while f.player.life : #Tant que le personnage est en vie
         
         if ennemy.listEnnemy.count(0) == len(ennemy.listEnnemy) :  #Si le nombre de 0 dans la liste vaut la taille de la liste
             victory()                                              #Cela signifie que tous les ennemis sont morts
@@ -30,8 +30,8 @@ def combat() :
                     mechant.count -= 1
         
         #On diminue aussi le cooldown de l'arme de 
-        if player.weapon.cooldown != 0 :
-            player.weapon.cooldown -= 1
+        if f.player.weapon.cooldown != 0 :
+            f.player.weapon.cooldown -= 1
         
         #On appelle la fonction de menu de sélection d'action
         choice = askAction()
@@ -82,7 +82,7 @@ def mob(etage) : #Les ennemis dépendent de l'étage auquel on est
     
     #On lance le combat. A la fin de celui la, on gagne 30 golds
     combat()
-    player.gold += 30
+    f.player.gold += 30
 
 #Cette fonction est appellée quand on marche sur une case boss
 def boss(etage) :
@@ -102,7 +102,7 @@ def boss(etage) :
     
     #On lance le combat, et on gagne 80 golds
     combat()
-    player.gold += 80
+    f.player.gold += 80
 
  
 

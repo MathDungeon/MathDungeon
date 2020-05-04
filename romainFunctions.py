@@ -5,6 +5,7 @@ from constants import *
 import functions as f
 import time
 import pygame
+import sys
 
 """
 Ce fichier sert à créer des fonctions qui permettent de simplifier le code, lui faire gagner en lisibilité 
@@ -137,10 +138,103 @@ J'importe tous mes sprites et je les assignes à une variable str_, afin de ne p
 """    
 def windowInitialisation(personnage) :
     
+    global window
+    global spr_dungeon
+    global spr_pointeur
+    global spr_selection
+    global spr_gobelin
+    global spr_bat
+    global spr_vampire
+    global spr_spider
+    global spr_witch
+    global spr_ogre
+    global spr_Msmoke
+    global spr_minotaure
+    global spr_pointeurPerso
+    global spr_hpBar
+    global spr_fleche
+    
+    global spr_A
+    global spr_B
+    global spr_C
+    global spr_D
+    global spr_E
+    global spr_F
+    global spr_G
+    global spr_H
+    global spr_I
+    global spr_J
+    global spr_K
+    global spr_L
+    global spr_M
+    global spr_N
+    global spr_O
+    global spr_P
+    global spr_Q
+    global spr_R
+    global spr_S
+    global spr_T
+    global spr_U
+    global spr_V
+    global spr_W
+    global spr_X
+    global spr_Y
+    global spr_Z 
+        
+    global font
     global personnageFuctions
 
     personnageFunctions = personnage
+
+    spr_dungeon = pygame.image.load("Sprites/backgroundDungeon.jpg")
+    spr_selection = pygame.image.load("Sprites/selectionScreen.png")
+    spr_pointeur = pygame.image.load("Sprites/pointeur.png")
+    spr_gobelin = pygame.image.load("Sprites/gobelin.png")
+    spr_bat = pygame.image.load("Sprites/bat.png")
+    spr_vampire = pygame.image.load("Sprites/vampire.png")
+    spr_spider = pygame.image.load("Sprites/araignee.png")
+    spr_witch = pygame.image.load("Sprites/sorciere.png")
+    spr_ogre = pygame.image.load("Sprites/ogre.png")
+    spr_Msmoke = pygame.image.load("Sprites/smokeMonster.png")
+    spr_minotaure = pygame.image.load("Sprites/minotaure.png")
+    spr_pointeurPerso = pygame.image.load("Sprites/pointeurPerso.png")
+    spr_hpBar = pygame.image.load("Sprites/hpBar.png")
+    spr_fleche = pygame.image.load("Sprites/fleche.png")
+
+    spr_A = pygame.image.load("Sprites/Lettres/A.png")
+    spr_B = pygame.image.load("Sprites/Lettres/B.png")
+    spr_C = pygame.image.load("Sprites/Lettres/C.png")
+    spr_D = pygame.image.load("Sprites/Lettres/D.png")
+    spr_E = pygame.image.load("Sprites/Lettres/E.png")
+    spr_F = pygame.image.load("Sprites/Lettres/F.png")
+    spr_G = pygame.image.load("Sprites/Lettres/G.png")
+    spr_H = pygame.image.load("Sprites/Lettres/H.png")
+    spr_I = pygame.image.load("Sprites/Lettres/I.png")
+    spr_J = pygame.image.load("Sprites/Lettres/J.png")
+    spr_K = pygame.image.load("Sprites/Lettres/K.png")
+    spr_L = pygame.image.load("Sprites/Lettres/L.png")
+    spr_M = pygame.image.load("Sprites/Lettres/M.png")
+    spr_N = pygame.image.load("Sprites/Lettres/N.png")
+    spr_O = pygame.image.load("Sprites/Lettres/O.png")
+    spr_P = pygame.image.load("Sprites/Lettres/P.png")
+    spr_Q = pygame.image.load("Sprites/Lettres/Q.png")
+    spr_R = pygame.image.load("Sprites/Lettres/R.png")
+    spr_S = pygame.image.load("Sprites/Lettres/S.png")
+    spr_T = pygame.image.load("Sprites/Lettres/T.png")
+    spr_U = pygame.image.load("Sprites/Lettres/U.png")
+    spr_V = pygame.image.load("Sprites/Lettres/V.png")
+    spr_W = pygame.image.load("Sprites/Lettres/W.png")
+    spr_X = pygame.image.load("Sprites/Lettres/X.png")
+    spr_Y = pygame.image.load("Sprites/Lettres/Y.png")
+    spr_Z = pygame.image.load("Sprites/Lettres/Z.png")
     
+    window = pygame.display.set_mode((928,512))
+
+    font = pygame.font.SysFont('arial', 24)
+
+    height = 512
+    width = 928
+
     window.blit(spr_dungeon,(0,0))
     window.blit(spr_selection,(0,384))
     
@@ -700,7 +794,8 @@ def defeat() :    #Affiche un écran de défaite lorsque le combat est perdu
     window.blit(spr_defeatScreen,(123,0))
     pygame.display.flip()
     loop = True
-    menuPrincipal()
+    pygame.quit
+    sys.exit()
                     
                 
 #Finalement, toutes ces fonctions servent à invoquer plus facilement un ennemi en marquant simplement son nom.               

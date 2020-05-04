@@ -35,6 +35,7 @@ notVisibleTileSprite = pygame.image.load("Sprites/notVisibleTile.png")
 keyESprite = pygame.image.load("Sprites/keyE.png")
 trapdoorSprite = pygame.image.load("Sprites/trapdoor.png")
 spiderSprite = pygame.image.load("Sprites/spider.png")
+blacksmithSprite = pygame.image.load("Sprites/anvil.png")
 
 spr_dungeon = pygame.image.load("Sprites/backgroundDungeon.jpg")
 spr_selection = pygame.image.load("Sprites/selectionScreen.png")
