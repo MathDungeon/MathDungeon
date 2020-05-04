@@ -5,6 +5,9 @@ from constantFight import *
 import functions as f
 import random
 
+personnage = character()
+windowInitialisation(personnage)
+
 #La fontion combat est celle appellé pour le déroulement d'un combat et des actions
 def combat() :
     player = f.player
