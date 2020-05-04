@@ -4,6 +4,9 @@ from romainFunctions import *
 from constantFight import *
 import random
 
+personnage = character()
+windowInitialisation(personnage)
+
 #La fontion combat est celle appellé pour le déroulement d'un combat et des actions
 def combat() :
     
