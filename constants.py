@@ -14,9 +14,9 @@ pygame.init()
 #Window
 
 height = 512
-weight = 928
+width = 928
 cHeight = 15
-cWeight = 28
+cWidth = 28
 
 #Colors
 
@@ -34,6 +34,49 @@ visibleTileSprite = pygame.image.load("Sprites/visibleTile.png")
 notVisibleTileSprite = pygame.image.load("Sprites/notVisibleTile.png")
 keyESprite = pygame.image.load("Sprites/keyE.png")
 trapdoorSprite = pygame.image.load("Sprites/trapdoor.png")
+spiderSprite = pygame.image.load("Sprites/spider.png")
+
+spr_dungeon = pygame.image.load("Sprites/backgroundDungeon.jpg")
+spr_selection = pygame.image.load("Sprites/selectionScreen.png")
+spr_pointeur = pygame.image.load("Sprites/pointeur.png")
+spr_gobelin = pygame.image.load("Sprites/gobelin.png")
+spr_bat = pygame.image.load("Sprites/bat.png")
+spr_vampire = pygame.image.load("Sprites/vampire.png")
+spr_spider = pygame.image.load("Sprites/araignee.png")
+spr_witch = pygame.image.load("Sprites/sorciere.png")
+spr_ogre = pygame.image.load("Sprites/ogre.png")
+spr_Msmoke = pygame.image.load("Sprites/smokeMonster.png")
+spr_minotaure = pygame.image.load("Sprites/minotaure.png")
+spr_pointeurPerso = pygame.image.load("Sprites/pointeurPerso.png")
+spr_hpBar = pygame.image.load("Sprites/hpBar.png")
+spr_fleche = pygame.image.load("Sprites/fleche.png")
+    
+spr_A = pygame.image.load("Sprites/Lettres/A.png")
+spr_B = pygame.image.load("Sprites/Lettres/B.png")
+spr_C = pygame.image.load("Sprites/Lettres/C.png")
+spr_D = pygame.image.load("Sprites/Lettres/D.png")
+spr_E = pygame.image.load("Sprites/Lettres/E.png")
+spr_F = pygame.image.load("Sprites/Lettres/F.png")
+spr_G = pygame.image.load("Sprites/Lettres/G.png")
+spr_H = pygame.image.load("Sprites/Lettres/H.png")
+spr_I = pygame.image.load("Sprites/Lettres/I.png")
+spr_J = pygame.image.load("Sprites/Lettres/J.png")
+spr_K = pygame.image.load("Sprites/Lettres/K.png")
+spr_L = pygame.image.load("Sprites/Lettres/L.png")
+spr_M = pygame.image.load("Sprites/Lettres/M.png")
+spr_N = pygame.image.load("Sprites/Lettres/N.png")
+spr_O = pygame.image.load("Sprites/Lettres/O.png")
+spr_P = pygame.image.load("Sprites/Lettres/P.png")
+spr_Q = pygame.image.load("Sprites/Lettres/Q.png")
+spr_R = pygame.image.load("Sprites/Lettres/R.png")
+spr_S = pygame.image.load("Sprites/Lettres/S.png")
+spr_T = pygame.image.load("Sprites/Lettres/T.png")
+spr_U = pygame.image.load("Sprites/Lettres/U.png")
+spr_V = pygame.image.load("Sprites/Lettres/V.png")
+spr_W = pygame.image.load("Sprites/Lettres/W.png")
+spr_X = pygame.image.load("Sprites/Lettres/X.png")
+spr_Y = pygame.image.load("Sprites/Lettres/Y.png")
+spr_Z = pygame.image.load("Sprites/Lettres/Z.png")
 
 #Font
 
@@ -51,7 +94,4 @@ def mapf(coord):
 	x,y = coord
 	return mape[y][x]
 
-level1 = [[(10,9),(11,9),(12,7),(12,8),(12,9),(13,6),(13,7),(14,5),(14,6),(14,7),(14,8),(15,5),(15,7),(15,8),(16,6),(16,7),(17,6),{(9,9):"Boss",(15,9):"Shop"}],[(14,5),(16,5),(12,6),(13,6),(14,6),(15,6),(16,6),(13,7),(14,7),(15,7),(16,7),(17,7),(12,8),(13,8),(17,8),(18,8),{(17,9):"Boss",(12,6):"Shop"}]]
-level2 = [[(11,8),(11,9),(12,6),(12,8),(13,6),(13,8),(13,9),(13,10),(14,4),(14,5),(14,6),(14,7),(14,8),(14,10),(15,4),(15,6),(15,7),(16,7),(17,7),(17,8),{(10,8):"Boss",(12,5):"Shop"}],[(11,8),(11,9),(12,6),(12,8),(13,6),(13,8),(13,9),(13,10),(14,4),(14,5),(14,6),(14,7),(14,8),(14,10),(15,4),(15,6),(15,7),(16,7),(17,7),(17,8),{(10,8):"Boss",(12,5):"Shop"}]]
-levels = [level1,level2]
 #temp = [i for j in mape for i in j if i]

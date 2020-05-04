@@ -56,6 +56,8 @@ class tile:
                 f.window.blit(const.shopSprite,((self.x*32),(self.y*32)))
             if self.content == "Defeated_Boss" and not(self.x == f.player.x and self.y == f.player.y):
                 f.window.blit(const.trapdoorSprite,((self.x*32),(self.y*32)))
+            if self.content == "Mob" and not(self.x == f.player.x and self.y == f.player.y):
+                f.window.blit(const.spiderSprite,((self.x*32),(self.y*32)))
         else:
             f.window.blit(const.notVisibleTileSprite,((self.x*32),(self.y*32)))
 
@@ -68,9 +70,9 @@ class tile:
                 i.reveal()
 
     def interact(self):
-        if self.content:
+        if self.content == "Defeated_Boss" or self.content == "Shop":
             global window
-            temp = {"Boss":"Oulala", "Shop":"Marchander","Defeated_Boss":"Etage suivant"}
+            temp = {"Shop":"Marchander","Defeated_Boss":"Etage suivant"}
             text = const.font.render(temp[self.content],True,const.colorBlack)
             f.window.blit(const.keyESprite,(416,370))
             f.window.blit(text,(448,371))

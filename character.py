@@ -132,6 +132,6 @@ class character :
     def move(self,x,y):
         self.x = x
         self.y = y
-        self.x = f.varFraming(self.x, 0, const.cWeight)
+        self.x = f.varFraming(self.x, 0, const.cWidth)
         self.y = f.varFraming(self.y, 0, const.cHeight)
         self.tile = const.mape[self.y][self.x]

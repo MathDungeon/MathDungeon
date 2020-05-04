@@ -32,12 +32,12 @@ def gameInit():
     player = ch.character()
     #Initialize pygame and window
     pygame.init()
-    window = pygame.display.set_mode((const.weight, const.height))
+    window = pygame.display.set_mode((const.width, const.height))
     rand.seed()
 
 def draw():
     #Clear BG
-    window.fill(const.defaultBGColor)
+    window.blit(const.spr_dungeon,(0,0))
 
     for line in const.mape:
         for t in line:
@@ -79,6 +79,9 @@ def gameLoop():
                         if player.tile.content == "Boss":
                             rom1.boss(level)
                             player.tile.content = "Defeated_Boss"
+                        if player.tile.content == "Mob":
+                            rom1.mob(level)
+                            player.tile.content = None
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
                     clrMap()
                     level = 1
@@ -119,6 +122,7 @@ def playerDraw(x,y):
 def generateMap(level):
     global generated
     tileNumber = (19, 24, 34,1)
+    enemyNumber = (4,5,7,0)
     tile((player.x, player.y), True)
     tile((15,7))
     loop = True
@@ -140,3 +144,8 @@ def generateMap(level):
         else:
             loop = False
     generated = True
+    temp = [i for j in const.mape for i in j if i]
+    temp = [i for i in temp if i.content == None]
+    for i in range(enemyNumber[level-1]):
+        mob = rand.randrange(len(temp))
+        temp.pop(mob).content = "Mob"
