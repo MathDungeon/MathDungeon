@@ -3,13 +3,14 @@ Code by Remi
 """
 
 import pygame
+import os
 import constants as const
 import character as ch
 import random as rand
 import mainRomain as rom1
 from menuMarchand import *
 from menuForgeron import *
-from sys import exit,platform
+from sys import platform
 from tile import tile
 
 #Functions
@@ -65,9 +66,9 @@ def gameLoop():
             reset = False
             events = pygame.event.get()
             for event in events:
-                if event.type == pygame.QUIT:
-                    gameQuit = True
-                    reset = True
+                if event.type == pygame.QUIT or (event.type == KEYDOWN and event.key == K_F4 and (K_LALT or K_RALT)):
+                    pygame.quit()
+                    os._exit(1)
                 if platform == 'linux':
                     keys = {pygame.K_UP:(player.y-1,player.x),pygame.K_DOWN:(player.y+1,player.x),pygame.K_LEFT:(player.y,player.x-1),pygame.K_RIGHT:(player.y,player.x+1)}
                 elif platform == 'win32':
@@ -108,6 +109,7 @@ def gameLoop():
             draw()
             if level == 4:
                 gameQuit = True
+                reset = True
     clrMap()
 
 def clrMap():
@@ -129,7 +131,7 @@ def generateMap(level):
     loop = True
     while loop:
         try:
-            tile((player.x, player.y), True)
+            tile((player.x, player.y), True, content = "Spawn")
             temp = [i for j in const.mape for i in j if i]
             while len(temp) < tileNumber[level-1]:
                 rand.choice(temp).generate()

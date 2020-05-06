@@ -32,7 +32,7 @@ def menuPrincipal():
 
     while True:
         for event in pygame.event.get() :  
-            if event.type==QUIT :    #Cette boucle sert à quitter la fenêtre si le joueur clique sur la croix
+            if event.type==QUIT or (event.type == KEYDOWN and event.key == K_F4 and (K_LALT or K_RALT)):    #Cette boucle sert à quitter la fenêtre si le joueur clique sur la croix
                 pygame.quit()
                 sys.exit()
             
