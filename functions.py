@@ -126,10 +126,11 @@ def generateMap(level):
     global generated
     tileNumber = (19, 24, 34,1)
     enemyNumber = (4,5,7,0)
+    tile((player.x, player.y), True)
+    tile((15,7))
     loop = True
     while loop:
         try:
-            tile((player.x, player.y), True)
             temp = [i for j in const.mape for i in j if i]
             while len(temp) < tileNumber[level-1]:
                 rand.choice(temp).generate()
@@ -145,7 +146,6 @@ def generateMap(level):
             temp.pop(blacksmith).content = "Blacksmith"
         except ValueError:
             loop = True
-            clrMap()
         else:
             loop = False
     generated = True

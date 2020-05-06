@@ -3,8 +3,8 @@
 Code by Léo
 """
 import pygame, sys                         #J'importe les modules et les fichiers dont j'ai besoin
-import functions as f
 from pygame.locals import *
+from main import *
 
 """
 Ce ficher sert à créer le menu principal via lequel le joueur va accéder au jeu
@@ -66,9 +66,7 @@ def menuPrincipal():
                     window.blit(font5.render('QUITTER', False, (255,255,255)),(410,295))
                 
                 if event.key == K_RETURN and MPcursor == 1 :
-                    f.gameInit()
-                    f.generateMap(1)
-                    f.gameLoop()
+                    main()
                     
                 if event.key == K_RETURN and MPcursor == 2 : #Cette boucle sert à quitter la fenêtre si le joueur sélectionne l'option "QUITTER"
                     pygame.quit()

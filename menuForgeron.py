@@ -52,7 +52,7 @@ def menuForgeron(personnage):
                     window.blit(font1.render('AMELIORER', False, (255,255,255)),(82,45))
                     window.blit(spr_curseur,(40,114))
                     if personnage.weapon.name == 'Epée rouillée' :
-                        window.blit(font2.render('Epée rouillée', False, (255,255,255)),(62,118))
+                        window.blit(font2.render('Epée rouilée', False, (255,255,255)),(62,118))
                     elif personnage.weapon.name == 'Epée en fer' :
                         window.blit(font2.render('Epée en fer', False, (255,255,255)),(62,118))
                     elif personnage.weapon.name == 'Katana Légendaire' :
