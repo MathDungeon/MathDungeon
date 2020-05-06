@@ -6,7 +6,7 @@ import pygame, sys                #J'importe les modules et les fichiers dont j'
 from pygame.locals import *
 from ennemy import *
 from functions import *
-from romainFunctions import * 
+from romainFunctions import *
 from constantFight import *
 from character import *
 
@@ -16,6 +16,7 @@ Ce ficher sert à créer le menu du marchand via lequel le joueur pourra acheter
 
 spr_menu = pygame.image.load("Sprites/menu.png")                     #J'importe les images dont j'ai besoin et je les associe à une variable
 spr_curseur = pygame.image.load("Sprites/test_curseur_jaune.png")
+spr_coin = pygame.image.load("Sprites/coin2.png")
 
 def menuMarchand(player):
     pygame.init()   #On initialise pygame
@@ -34,7 +35,8 @@ def menuMarchand(player):
     font3 = pygame.font.SysFont('Courier', 23)
     font4 = pygame.font.SysFont('Courier', 19)
     
-    window.blit(spr_menu,(30,30))              #Je dessine le menu de marchand
+    window.blit(font2.render("Votre argent : {0}".format(gold), False,(0,0,0)), (12,478))     #Je dessine le menu de marchand
+    window.blit(spr_menu,(30,30))
     window.blit(spr_curseur,(80,45))
     window.blit(font1.render('ACHETER', False, (255,255,255)),(102,45))
 
@@ -106,32 +108,32 @@ def menuMarchand(player):
                     if player.weapon.name == 'Epée en fer' :
                         window.blit(font2.render('Vous possédez déjà', False, (255,255,255)),(48,327))
                         window.blit(font2.render('cette arme', False, (255,255,255)),(98,347))
-                    elif gold < 100 :
+                    elif player.gold < 100 :
                         window.blit(font4.render("Pas assez d'argent", False, (255,255,255)),(54,347))
                     else :
                         window.blit(font3.render('Epée Achetée !', False, (255,255,255)),(58,343))
                         player.weapon = weapon(name='Epée en fer', damage = 10, skill = 'Thunderstruck', tempsCd = 5)
-                        gold -= 100
+                        player.gold -= 100
                 if event.key == pygame.K_RETURN and sousMenu == True and cursor == 3 :
                     if player.weapon.name == 'Katana Légendaire' :
                         window.blit(font2.render('Vous possédez déjà', False, (255,255,255)),(48,327))
                         window.blit(font2.render('cette arme', False, (255,255,255)),(98,347))
-                    elif gold < 250 :
+                    elif player.gold < 250 :
                         window.blit(font4.render("Pas assez d'argent", False, (255,255,255)),(54,347))
                     else :
                         window.blit(font3.render('Katana Acheté !', False, (255,255,255)),(52,343))
-                        gold = gold - 250
+                        player.gold -= 250
                         player.weapon = weapon(name='Katana Légendaire', damage = 15 , skill = 'Thunderstruck', tempsCd = 5)
                 if event.key == pygame.K_RETURN and sousMenu == True and cursor == 5 :
                     if player.backpack.potion == 5 :
                         window.blit(font2.render('Vous possédez déjà', False, (255,255,255)),(48,327))
                         window.blit(font2.render('5 potions', False, (255,255,255)),(98,347))
-                    elif gold < 30 :
+                    elif player.gold < 30 :
                         window.blit(font4.render("Pas assez d'argent", False, (255,255,255)),(54,347))
                     else :
                         window.blit(font3.render('Potion Achetée !', False, (255,255,255)),(45,343))
                         player.backpack.potion += 1
-                        gold = gold - 30
+                        player.gold -= 30
                 
                 if event.key == pygame.K_RETURN and sousMenu == False :  #Cette boucle sert au programme de savoir si le joueur est dans le sous-menu ou non (cette boucle est à la fin car sinon le programme ne marche pas correctement)
                     sousMenu = True
