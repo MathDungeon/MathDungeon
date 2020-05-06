@@ -66,7 +66,7 @@ def gameLoop():
             reset = False
             events = pygame.event.get()
             for event in events:
-                if event.type == pygame.QUIT or (event.type == KEYDOWN and event.key == K_F4 and (K_LALT or K_RALT)):
+                if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_F4 and (pygame.K_LALT or pygame.K_RALT)):
                     pygame.quit()
                     os._exit(1)
                 if platform == 'linux':

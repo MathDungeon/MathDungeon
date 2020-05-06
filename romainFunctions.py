@@ -264,7 +264,7 @@ def askAction() :
         for event in pygame.event.get() :    #boucle pygame, ou l'on interagit avec l'interface graphique
             pygame.display.flip()    #Permet de rafraichir le visuel de la fenêtre
             
-            if event.type == pygame.QUIT :   #Cette partie est dans toutes les boucles pygame, elle permet de quitter si l'on appuie sr la croix
+            if event.type == pygame.QUIT or (event.type ==pygame.KEYDOWN and event.key == pygame.K_F4 and (pygame.K_LALT or pygame.K_RALT)) :   #Cette partie est dans toutes les boucles pygame, elle permet de quitter si l'on appuie sr la croix
                 pygame.quit()
                 exit()
             
@@ -355,7 +355,7 @@ def askTarget(personnage) :
         for event in pygame.event.get() :
             pygame.display.flip()
             
-            if event.type == pygame.QUIT :   #Permet de quitter si l'on clique sur la croix
+            if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_F4 and (pygame.K_LALT or pygame.K_RALT)) :   #Permet de quitter si l'on clique sur la croix
                 pygame.quit()
                 exit()
                 
@@ -494,7 +494,7 @@ def attack(personnage,ennemy):
                 
             pygame.display.flip()
                 
-            if event.type == pygame.QUIT :
+            if event.type == pygame.QUIT or (event.type ==pygame.KEYDOWN and event.key == pygame.K_F4 and (pygame.K_LALT or pygame.K_RALT)) :
                 pygame.quit()
                 exit()
                 
@@ -598,7 +598,7 @@ def attackFinal(personnage,ennemy):
                 
             pygame.display.flip()
                 
-            if event.type == pygame.QUIT :
+            if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_F4 and (pygame.K_LALT or pygame.K_RALT)) :
                 pygame.quit()
                 exit()
                 
