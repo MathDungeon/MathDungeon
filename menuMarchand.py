@@ -25,7 +25,6 @@ def menuMarchand(player):
 
     WHITE = (255,255,255)           #Je crée les variables que j'utiliserai plus tard
     cursor = 0
-    gold = 500
     sousMenu = False
 
     window.fill(WHITE)

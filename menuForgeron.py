@@ -15,6 +15,7 @@ Ce ficher sert à créer le menu du forgeron via lequel le joueur pourra amélio
 
 spr_menu = pygame.image.load("Sprites/menu.png")                        #J'importe les images dont j'ai besoin et je les associe à une variable
 spr_curseur = pygame.image.load("Sprites/test_curseur_jaune.png")
+spr_coin = pygame.image.load("Sprites/coin2.png")
 
 def menuForgeron(personnage):
     pygame.init()   #On initialise pygame
@@ -22,7 +23,6 @@ def menuForgeron(personnage):
     window = pygame.display.set_mode((928,512))   #On crée la fenêtre de jeu
 
     WHITE = (255,255,255)
-    gold = 500
     sousMenu = False
 
     window.fill(WHITE)
@@ -31,7 +31,8 @@ def menuForgeron(personnage):
     font2 = pygame.font.SysFont('Courier', 20)
     font3 = pygame.font.SysFont('Courier', 23)
     
-    window.blit(spr_menu,(30,30))                                        #Je dessine le menu du forgeron
+    window.blit(font2.render("Votre argent : {0}".format(player.gold), False,(0,0,0)), (12,478))  #Je dessine le menu du forgeron
+    window.blit(spr_menu,(30,30)
     window.blit(spr_curseur,(60,45))
     window.blit(font1.render('AMELIORER', False, (255,255,255)),(82,45))
 
@@ -53,10 +54,16 @@ def menuForgeron(personnage):
                     window.blit(spr_curseur,(40,114))
                     if personnage.weapon.name == 'Epée rouillée' :
                         window.blit(font2.render('Epée rouillée', False, (255,255,255)),(62,118))
+                        window.blit(font2.render("70", False,(255,255,255)),(202,143))
+                        window.blit(spr_coin,(237,143))
                     elif personnage.weapon.name == 'Epée en fer' :
                         window.blit(font2.render('Epée en fer', False, (255,255,255)),(62,118))
+                        window.blit(font2.render("70", False,(255,255,255)),(202,143))
+                        window.blit(spr_coin,(237,143))
                     elif personnage.weapon.name == 'Katana Légendaire' :
                         window.blit(font2.render('Katana Légendaire', False, (255,255,255)),(62,118))
+                        window.blit(font2.render("70", False,(255,255,255)),(202,143))
+                        window.blit(spr_coin,(237,143))
                     
                 if event.key == pygame.K_ESCAPE :
                     if sousMenu == True :                 #Cette boucle sert à revenir en arrière dans le menu
@@ -87,15 +94,23 @@ def menuForgeron(personnage):
                     else :
                         personnage.weapon.damage += 3
                         gold -= 70
+                        pygame.draw.rect(window,WHITE,(10,460,240,50))
+                        window.blit(font2.render("Votre argent : {0}".format(player.gold), False,(0,0,0)), (12,478))
                         window.blit(spr_menu,(30,30))
                         window.blit(font1.render('AMELIORER', False, (255,255,255)),(82,45))
                         window.blit(spr_curseur,(40,114))
                         if personnage.weapon.name == 'Epée rouillée' :
                             window.blit(font2.render('Epée rouilée', False, (255,255,255)),(62,118))
+                            window.blit(font2.render("70", False,(255,255,255)),(202,143))
+                            window.blit(spr_coin,(237,143))
                         elif personnage.weapon.name == 'Epée en fer' :
                             window.blit(font2.render('Epée en fer', False, (255,255,255)),(62,118))
+                            window.blit(font2.render("70", False,(255,255,255)),(202,143))
+                            window.blit(spr_coin,(237,143))
                         elif personnage.weapon.name == 'Katana Légendaire' :
                             window.blit(font2.render('Katana Légendaire', False, (255,255,255)),(62,118))
+                            window.blit(font2.render("70", False,(255,255,255)),(202,143))
+                            window.blit(spr_coin,(237,143))
                         window.blit(font2.render("L'arme a été", False, (255,255,255)),(42,205))
                         window.blit(font2.render("améliorée", False, (255,255,255)),(42,225))
                         if personnage.weapon.level == 1 :
