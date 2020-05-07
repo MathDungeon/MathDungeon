@@ -35,7 +35,7 @@ def menuMarchand(player):
     font3 = pygame.font.SysFont('Courier', 23)
     font4 = pygame.font.SysFont('Courier', 19)
     
-    window.blit(font2.render("Votre argent : {0}".format(gold), False,(0,0,0)), (12,478))     #Je dessine le menu de marchand
+    window.blit(font2.render("Votre argent : {0}".format(player.gold), False,(0,0,0)), (12,478))     #Je dessine le menu de marchand
     window.blit(spr_menu,(30,30))
     window.blit(spr_curseur,(80,45))
     window.blit(font1.render('ACHETER', False, (255,255,255)),(102,45))
@@ -133,7 +133,7 @@ def menuMarchand(player):
                         player.weapon = weapon(name='Epée en fer', damage = 10, skill = 'Thunderstruck', tempsCd = 5)
                         player.gold -= 100
                         pygame.draw.rect(window,WHITE,(10,460,240,50))
-                        window.blit(font2.render("Votre argent : {0}".format(gold), False,(0,0,0)), (12,478))
+                        window.blit(font2.render("Votre argent : {0}".format(player.gold), False,(0,0,0)), (12,478))
                 if event.key == pygame.K_RETURN and sousMenu == True and cursor == 3 :
                     if player.weapon.name == 'Katana Légendaire' :
                         window.blit(font2.render('Vous possédez déjà', False, (255,255,255)),(48,327))
@@ -145,7 +145,7 @@ def menuMarchand(player):
                         player.weapon = weapon(name='Katana Légendaire', damage = 15 , skill = 'Thunderstruck', tempsCd = 5)
                         player.gold -= 250
                         pygame.draw.rect(window,WHITE,(10,460,240,50))
-                        window.blit(font2.render("Votre argent : {0}".format(gold), False,(0,0,0)), (12,478))
+                        window.blit(font2.render("Votre argent : {0}".format(player.gold), False,(0,0,0)), (12,478))
                 if event.key == pygame.K_RETURN and sousMenu == True and cursor == 5 :
                     if player.backpack.potion == 5 :
                         window.blit(font2.render('Vous possédez déjà', False, (255,255,255)),(48,327))
@@ -157,7 +157,7 @@ def menuMarchand(player):
                         player.backpack.potion += 1
                         player.gold -= 30
                         pygame.draw.rect(window,WHITE,(10,460,240,50))
-                        window.blit(font2.render("Votre argent : {0}".format(gold), False,(0,0,0)), (12,478))
+                        window.blit(font2.render("Votre argent : {0}".format(player.gold), False,(0,0,0)), (12,478))
                 
                 if event.key == pygame.K_RETURN and sousMenu == False :  #Cette boucle sert au programme de savoir si le joueur est dans le sous-menu ou non (cette boucle est à la fin car sinon le programme ne marche pas correctement)
                     sousMenu = True
