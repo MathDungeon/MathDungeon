@@ -131,6 +131,7 @@ def menuMarchand(player):
                         window.blit(font3.render('Epée Achetée !', False, (255,255,255)),(58,343))
                         player.weapon = weapon(name='Epée en fer', damage = 10, skill = 'Thunderstruck', tempsCd = 5)
                         player.gold -= 100
+                        levelWeapon = 0
                         pygame.draw.rect(window,WHITE,(10,460,240,50))
                         window.blit(font2.render("Votre argent : {0}".format(player.gold), False,(0,0,0)), (12,478))
                 if event.key == pygame.K_RETURN and sousMenu == True and cursor == 3 :
@@ -143,6 +144,7 @@ def menuMarchand(player):
                         window.blit(font3.render('Katana Acheté !', False, (255,255,255)),(52,343))
                         player.weapon = weapon(name='Katana Légendaire', damage = 15 , skill = 'Thunderstruck', tempsCd = 5)
                         player.gold -= 250
+                        levelWeapon = 0
                         pygame.draw.rect(window,WHITE,(10,460,240,50))
                         window.blit(font2.render("Votre argent : {0}".format(player.gold), False,(0,0,0)), (12,478))
                 if event.key == pygame.K_RETURN and sousMenu == True and cursor == 5 :
