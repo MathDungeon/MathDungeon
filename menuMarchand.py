@@ -78,22 +78,40 @@ def menuMarchand(player):
                     window.blit(font1.render('ACHETER', False, (255,255,255)),(102,45))
                     window.blit(spr_curseur,(40,114))
                     window.blit(font2.render("Epée en fer", False,(255,255,255)),(62,118))
-                    window.blit(font2.render("Katana Légendaire", False,(255,255,255)),(62,148))
-                    window.blit(font2.render("Potion de vie", False,(255,255,255)),(62,178))
+                    window.blit(font2.render("100", False,(255,255,255)),(202,143))
+                    window.blit(spr_coin,(237,143))
+                    window.blit(font2.render("Katana Légendaire", False,(255,255,255)),(62,168))
+                    window.blit(font2.render("250", False,(255,255,255)),(202,193))
+                    window.blit(spr_coin,(237,193))
+                    window.blit(font2.render("Potion de vie", False,(255,255,255)),(62,218))
+                    window.blit(font2.render("30", False,(255,255,255)),(202,243))
+                    window.blit(spr_coin,(225,243))
                 if cursor == 3 :
                     window.blit(spr_menu,(30,30))
                     window.blit(font1.render('ACHETER', False, (255,255,255)),(102,45))
-                    window.blit(spr_curseur,(40,144))
+                    window.blit(spr_curseur,(40,164))
                     window.blit(font2.render("Epée en fer", False,(255,255,255)),(62,118))
-                    window.blit(font2.render("Katana Légendaire", False,(255,255,255)),(62,148))
-                    window.blit(font2.render("Potion de vie", False,(255,255,255)),(62,178))
+                    window.blit(font2.render("100", False,(255,255,255)),(202,143))
+                    window.blit(spr_coin,(237,143))
+                    window.blit(font2.render("Katana Légendaire", False,(255,255,255)),(62,168))
+                    window.blit(font2.render("250", False,(255,255,255)),(202,193))
+                    window.blit(spr_coin,(237,193))
+                    window.blit(font2.render("Potion de vie", False,(255,255,255)),(62,218))
+                    window.blit(font2.render("30", False,(255,255,255)),(202,243))
+                    window.blit(spr_coin,(225,243))
                 if cursor == 5 :
                     window.blit(spr_menu,(30,30))
                     window.blit(font1.render('ACHETER', False, (255,255,255)),(102,45))
-                    window.blit(spr_curseur,(40,174))
+                    window.blit(spr_curseur,(40,214))
                     window.blit(font2.render("Epée en fer", False,(255,255,255)),(62,118))
-                    window.blit(font2.render("Katana Légendaire", False,(255,255,255)),(62,148))
-                    window.blit(font2.render("Potion de vie", False,(255,255,255)),(62,178))
+                    window.blit(font2.render("100", False,(255,255,255)),(202,143))
+                    window.blit(spr_coin,(237,143))
+                    window.blit(font2.render("Katana Légendaire", False,(255,255,255)),(62,168))
+                    window.blit(font2.render("250", False,(255,255,255)),(202,193))
+                    window.blit(spr_coin,(237,193))
+                    window.blit(font2.render("Potion de vie", False,(255,255,255)),(62,218))
+                    window.blit(font2.render("30", False,(255,255,255)),(202,243))
+                    window.blit(spr_coin,(225,243))
                     
                 if event.key == pygame.K_ESCAPE :
                     if sousMenu == True :             #Cette boucle sert à revenir en arrière dans le menu
@@ -114,6 +132,8 @@ def menuMarchand(player):
                         window.blit(font3.render('Epée Achetée !', False, (255,255,255)),(58,343))
                         player.weapon = weapon(name='Epée en fer', damage = 10, skill = 'Thunderstruck', tempsCd = 5)
                         player.gold -= 100
+                        pygame.draw.rect(window,WHITE,(10,460,240,50))
+                        window.blit(font2.render("Votre argent : {0}".format(gold), False,(0,0,0)), (12,478))
                 if event.key == pygame.K_RETURN and sousMenu == True and cursor == 3 :
                     if player.weapon.name == 'Katana Légendaire' :
                         window.blit(font2.render('Vous possédez déjà', False, (255,255,255)),(48,327))
@@ -122,8 +142,10 @@ def menuMarchand(player):
                         window.blit(font4.render("Pas assez d'argent", False, (255,255,255)),(54,347))
                     else :
                         window.blit(font3.render('Katana Acheté !', False, (255,255,255)),(52,343))
-                        player.gold -= 250
                         player.weapon = weapon(name='Katana Légendaire', damage = 15 , skill = 'Thunderstruck', tempsCd = 5)
+                        player.gold -= 250
+                        pygame.draw.rect(window,WHITE,(10,460,240,50))
+                        window.blit(font2.render("Votre argent : {0}".format(gold), False,(0,0,0)), (12,478))
                 if event.key == pygame.K_RETURN and sousMenu == True and cursor == 5 :
                     if player.backpack.potion == 5 :
                         window.blit(font2.render('Vous possédez déjà', False, (255,255,255)),(48,327))
@@ -134,6 +156,8 @@ def menuMarchand(player):
                         window.blit(font3.render('Potion Achetée !', False, (255,255,255)),(45,343))
                         player.backpack.potion += 1
                         player.gold -= 30
+                        pygame.draw.rect(window,WHITE,(10,460,240,50))
+                        window.blit(font2.render("Votre argent : {0}".format(gold), False,(0,0,0)), (12,478))
                 
                 if event.key == pygame.K_RETURN and sousMenu == False :  #Cette boucle sert au programme de savoir si le joueur est dans le sous-menu ou non (cette boucle est à la fin car sinon le programme ne marche pas correctement)
                     sousMenu = True
