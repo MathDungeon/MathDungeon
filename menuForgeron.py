@@ -32,7 +32,7 @@ def menuForgeron(personnage):
     font3 = pygame.font.SysFont('Courier', 23)
     
     window.blit(font2.render("Votre argent : {0}".format(player.gold), False,(0,0,0)), (12,478))  #Je dessine le menu du forgeron
-    window.blit(spr_menu,(30,30)
+    window.blit(spr_menu,(30,30))
     window.blit(spr_curseur,(60,45))
     window.blit(font1.render('AMELIORER', False, (255,255,255)),(82,45))
 
