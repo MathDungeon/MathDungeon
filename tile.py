@@ -81,7 +81,7 @@ class tile:
 
     def generate(self):
         temp = [i for i in [(self.x,self.y-1),(self.x,self.y+1),(self.x-1,self.y),(self.x+1,self.y)] if const.mapf(i) == None]
-        if temp and self.neighborsNb <= 1:
+        if temp and self.neighborsNb <= 2:
             gen = rand.choice(temp)
             tile(gen)
 
