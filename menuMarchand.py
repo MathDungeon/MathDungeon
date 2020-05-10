@@ -24,8 +24,8 @@ def menuMarchand(player):
     window = pygame.display.set_mode((928,512)) #On crée la fenêtre de jeu
 
     WHITE = (255,255,255)           #Je crée les variables que j'utiliserai plus tard
-    cursor = 0
-    sousMenu = False
+    cursor = 0    #Cette variable va servir à stocker la position du curseur
+    sousMenu = False     #Cette variable est vraie quand le joueur rentre dans le sous-menu et est fausse dans le cas inverse
 
     window.fill(WHITE)
     

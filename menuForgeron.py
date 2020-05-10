@@ -23,7 +23,7 @@ def menuForgeron(player):
     window = pygame.display.set_mode((928,512))   #On crée la fenêtre de jeu
 
     WHITE = (255,255,255)
-    sousMenu = False
+    sousMenu = False      #Cette variable est vraie quand le joueur rentre dans le sous-menu et est fausse dans le cas inverse
 
     window.fill(WHITE)
     

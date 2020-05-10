@@ -18,7 +18,7 @@ def menuPrincipal():
     window = pygame.display.set_mode((928,512)) #On crée la fenêtre de jeu
     pygame.display.set_caption("MathDungeon")   #On change le titre
     BLACK=(0,0,0)                               #Je crée les variables que j'utiliserai plus tard
-    MPcursor = 1
+    MPcursor = 1  #Cette variable va servir à stocker la position du curseur
     
     font5 = pygame.font.SysFont('Courier', 27)  #Je crée les polices d'écritures dont j'ai besoin et les assigne à une variable
     font6 = pygame.font.SysFont('Courier', 70)
