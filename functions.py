@@ -38,6 +38,9 @@ def gameInit():
     rand.seed()
 
 def draw():
+
+    global player
+
     #Clear BG
     window.blit(const.spr_dungeon,(0,0))
 
@@ -45,6 +48,9 @@ def draw():
         for t in line:
             if t:
                 t.tileDraw()
+
+    text = const.font.render("Votre argent : {0}".format(player.gold), True, const.colorWhite)
+    window.blit(text,(20,20))
 
     playerDraw(player.x, player.y)
     player.tile.interact()

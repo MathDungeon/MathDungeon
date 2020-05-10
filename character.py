@@ -125,7 +125,7 @@ class character :
             self.weapon.cooldown = self.weapon.tempsCd  #Remettre le cooldown à la constante initial de temps définie
             if self.weapon.skill == 'Thunderstruck' :
                 self.changeTarget(askTarget(self))
-                self.dealSkillDamage(20)
+                self.dealSkillDamage(self.weapon.damage*2)
                     
     #Permet de changer l'attribut target de manière plus organisée        
     def changeTarget(self,target):
