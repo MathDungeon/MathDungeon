@@ -81,43 +81,43 @@ def menuForgeron(player):
                         window.blit(spr_menu,(30,30))
                         window.blit(font1.render('AMELIORER', False, (255,255,255)),(82,45))
                         window.blit(spr_curseur,(40,114))
-                        if personnage.weapon.name == 'Epée rouillée' :
+                        if player.weapon.name == 'Epée rouillée' :
                             window.blit(font2.render('Epée rouilée', False, (255,255,255)),(62,118))
-                        elif personnage.weapon.name == 'Epée en fer' :
+                        elif player.weapon.name == 'Epée en fer' :
                             window.blit(font2.render('Epée en fer', False, (255,255,255)),(62,118))
-                        elif personnage.weapon.name == 'Katana Légendaire' :
+                        elif player.weapon.name == 'Katana Légendaire' :
                             window.blit(font2.render('Katana Légendaire', False, (255,255,255)),(62,118))
                         window.blit(font2.render("L'arme ne peut pas", False, (255,255,255)),(42,205))
                         window.blit(font2.render("être plus améliorée", False, (255,255,255)),(42,225))
-                    elif gold < 70 :
+                    elif player.gold < 70 :
                         window.blit(font4.render("Pas assez d'argent", False, (255,255,255)),(54,347))
                     else :
-                        personnage.weapon.damage += 3
-                        gold -= 70
+                        player.weapon.damage += 3
+                        player.gold -= 70
                         pygame.draw.rect(window,WHITE,(10,460,240,50))
                         window.blit(font2.render("Votre argent : {0}".format(player.gold), False,(0,0,0)), (12,478))
                         window.blit(spr_menu,(30,30))
                         window.blit(font1.render('AMELIORER', False, (255,255,255)),(82,45))
                         window.blit(spr_curseur,(40,114))
-                        if personnage.weapon.name == 'Epée rouillée' :
+                        if player.weapon.name == 'Epée rouillée' :
                             window.blit(font2.render('Epée rouilée', False, (255,255,255)),(62,118))
                             window.blit(font2.render("70", False,(255,255,255)),(202,143))
                             window.blit(spr_coin,(237,143))
-                        elif personnage.weapon.name == 'Epée en fer' :
+                        elif player.weapon.name == 'Epée en fer' :
                             window.blit(font2.render('Epée en fer', False, (255,255,255)),(62,118))
                             window.blit(font2.render("70", False,(255,255,255)),(202,143))
                             window.blit(spr_coin,(237,143))
-                        elif personnage.weapon.name == 'Katana Légendaire' :
+                        elif player.weapon.name == 'Katana Légendaire' :
                             window.blit(font2.render('Katana Légendaire', False, (255,255,255)),(62,118))
                             window.blit(font2.render("70", False,(255,255,255)),(202,143))
                             window.blit(spr_coin,(237,143))
                         window.blit(font2.render("L'arme a été", False, (255,255,255)),(42,205))
                         window.blit(font2.render("améliorée", False, (255,255,255)),(42,225))
-                        if personnage.weapon.level == 1 :
+                        if player.weapon.level == 1 :
                             window.blit(font2.render("(lvl: 1)", False, (255,255,255)),(42,265))
-                        elif personnage.weapon.level == 2 :
+                        elif player.weapon.level == 2 :
                             window.blit(font2.render("(lvl: 2)", False, (255,255,255)),(42,265))
-                        elif personnage.weapon.level == 3 :
+                        elif player.weapon.level == 3 :
                             window.blit(font2.render("(lvl: 3)", False, (255,255,255)),(42,265))
                         
                     
