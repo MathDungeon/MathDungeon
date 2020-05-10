@@ -74,7 +74,7 @@ class tile:
     def interact(self):
         if self.content == "Defeated_Boss" or self.content == "Shop" or self.content == "Blacksmith":
             global window
-            temp = {"Shop":"Marchander","Defeated_Boss":"Etage suivant","Blacksmith":"Repair and upgrade"}
+            temp = {"Shop":"Marchander","Defeated_Boss":"Etage suivant","Blacksmith":"Améliorer"}
             text = const.font.render(temp[self.content],True,const.colorWhite)
             f.window.blit(const.keyESprite,(416,370))
             f.window.blit(text,(448,371))
