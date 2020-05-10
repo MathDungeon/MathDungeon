@@ -76,7 +76,7 @@ def menuForgeron(player):
                         loop = False
                     
                 if event.key == pygame.K_RETURN and sousMenu == True :   #Cette boucle sert à améliorer l'arme et à vérifier si le joueur a assez d'argent et si l'arme n'est pas déjà améliorer au maximum
-                    player.weapon.level += 1
+                    
                     if player.weapon.level > 3:
                         player.weapon.level = 3
                         window.blit(spr_menu,(30,30))
@@ -93,6 +93,7 @@ def menuForgeron(player):
                     elif player.gold < 70 :
                         window.blit(font4.render("Pas assez d'argent", False, (255,255,255)),(54,347))
                     else :
+                        player.weapon.level += 1
                         player.weapon.damage += 3
                         player.gold -= 70
                         pygame.draw.rect(window,WHITE,(10,460,240,50))
