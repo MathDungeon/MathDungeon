@@ -1,15 +1,13 @@
-/*
-Code by Léo
-*/
-
 body
 {
 background-color:  #df7862 ;
 }
 h1
 {
+font-family: courier;
 text-decoration: underline;
 text-align: center;
+font-size: 58;
 }
 .lien_jeu
 {
@@ -20,4 +18,9 @@ font-family: sans-serif;
 border-width: 2px;
 border-color: black;
 border-style: solid;
+}
+.texte
+{
+font-size: 30;
+text-align: center;
 }

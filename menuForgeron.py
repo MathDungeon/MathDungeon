@@ -17,7 +17,7 @@ spr_menu = pygame.image.load("Sprites/menu.png")                        #J'impor
 spr_curseur = pygame.image.load("Sprites/test_curseur_jaune.png")
 spr_coin = pygame.image.load("Sprites/coin2.png")
 
-def menuForgeron(personnage):
+def menuForgeron(player):
     pygame.init()   #On initialise pygame
 
     window = pygame.display.set_mode((928,512))   #On crée la fenêtre de jeu
@@ -52,15 +52,15 @@ def menuForgeron(personnage):
                     window.blit(spr_menu,(30,30))
                     window.blit(font1.render('AMELIORER', False, (255,255,255)),(82,45))
                     window.blit(spr_curseur,(40,114))
-                    if personnage.weapon.name == 'Epée rouillée' :
+                    if player.weapon.name == 'Epée rouillée' :
                         window.blit(font2.render('Epée rouillée', False, (255,255,255)),(62,118))
                         window.blit(font2.render("70", False,(255,255,255)),(202,143))
                         window.blit(spr_coin,(237,143))
-                    elif personnage.weapon.name == 'Epée en fer' :
+                    elif player.weapon.name == 'Epée en fer' :
                         window.blit(font2.render('Epée en fer', False, (255,255,255)),(62,118))
                         window.blit(font2.render("70", False,(255,255,255)),(202,143))
                         window.blit(spr_coin,(237,143))
-                    elif personnage.weapon.name == 'Katana Légendaire' :
+                    elif player.weapon.name == 'Katana Légendaire' :
                         window.blit(font2.render('Katana Légendaire', False, (255,255,255)),(62,118))
                         window.blit(font2.render("70", False,(255,255,255)),(202,143))
                         window.blit(spr_coin,(237,143))
@@ -75,9 +75,9 @@ def menuForgeron(personnage):
                         loop = False
                     
                 if event.key == pygame.K_RETURN and sousMenu == True :   #Cette boucle sert à améliorer l'arme et à vérifier si le joueur a assez d'argent et si l'arme n'est pas déjà améliorer au maximum
-                    personnage.weapon.level += 1
-                    if personnage.weapon.level > 3:
-                        personnage.weapon.level = 3
+                    player.weapon.level += 1
+                    if player.weapon.level > 3:
+                        player.weapon.level = 3
                         window.blit(spr_menu,(30,30))
                         window.blit(font1.render('AMELIORER', False, (255,255,255)),(82,45))
                         window.blit(spr_curseur,(40,114))
