@@ -50,8 +50,8 @@ def menuMarchand(player):
 
             
             if event.type == pygame.KEYDOWN :   #Cette boucle sert à détecter si une touche est pressée
-                if event.key != pygame.K_RETURN and event.key != pygame.K_DOWN and event.key != pygame.K_UP and event.key != pygame.K_ESCAPE : #Cette boucle sert à ce qu'il ne se passe rien si le joueur appuie sur une touche autre que celles qui sont utiles (en raison de certains bugs)
-                    pass
+                if event.key != pygame.K_RETURN and event.key != pygame.K_DOWN and event.key != pygame.K_UP and event.key != pygame.K_ESCAPE : #Cette boucle sert à ce qu'il ne se passe rien si le joueur appuie sur
+                    pass                                                                                                                       #une touche autre que celles qui sont utiles (en raison de certains bugs)
                     
                 if event.key == pygame.K_RETURN and sousMenu == False :                     #Cette boucle sert à afficher le sous-menu
                     window.blit(spr_menu,(30,30))

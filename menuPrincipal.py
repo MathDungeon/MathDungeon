@@ -37,8 +37,8 @@ def menuPrincipal():
                 sys.exit()
             
             if event.type == KEYDOWN :   #Cette boucle sert à détecter si une touche est pressée
-                if event.key != pygame.K_RETURN and event.key != pygame.K_DOWN and event.key != pygame.K_UP : #Cette boucle sert à ce qu'il ne se passe rien si le joueur appuie sur une touche autre que celles qui sont utiles (en raison de certains bugs)
-                    pass
+                if event.key != pygame.K_RETURN and event.key != pygame.K_DOWN and event.key != pygame.K_UP : #Cette boucle sert à ce qu'il ne se passe rien si le joueur appuie sur
+                    pass                                                                                      #une touche autre que celles qui sont utiles (en raison de certains bugs)
                 
                 if event.key == pygame.K_DOWN :    #Ces deux boucles servent à modifier la valeur de la variable MPcursor si le joueur appuie sur les flèches du haut ou du bas
                     MPcursor += 1
@@ -50,7 +50,7 @@ def menuPrincipal():
                 if MPcursor < 1 :
                     MPcursor = 2
                 
-                if MPcursor == 1 :                                                         #Ces deux boucles servent à dessiner le curseur à des endroits différents en fonction de la valeur de la variable MPcursor
+                if MPcursor == 1 :                                               #Ces deux boucles servent à dessiner le curseur à des endroits différents en fonction de la valeur de la variable MPcursor
                     window.fill(BLACK)
                     window.blit(spr_curseur,(403,265))
                     window.blit(font6.render('MATH', False, (255,255,255)),(325,25))
