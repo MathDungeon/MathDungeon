@@ -42,7 +42,7 @@ def draw():
     global player
 
     #Clear BG
-    window.blit(const.spr_dungeon,(0,0))
+    window.blit(const.dungeonSprite,(0,0))
 
     for line in const.mape:
         for t in line:

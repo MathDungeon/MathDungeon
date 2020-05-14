@@ -35,6 +35,7 @@ keyESprite = pygame.image.load("Sprites/keyE.png")
 trapdoorSprite = pygame.image.load("Sprites/trapdoor.png")
 spiderSprite = pygame.image.load("Sprites/spider.png")
 blacksmithSprite = pygame.image.load("Sprites/anvil.png")
+dungeonSprite = pygame.image.load("Sprites/backgroundDungeon.jpg")
 
 #Font
 
